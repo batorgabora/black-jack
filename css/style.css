@@ -34,9 +34,16 @@ h1{
 }
 
 .container {
-    position: relative;
-    width: 100%;
-    height: 100vh;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+
+    /* your “design canvas” size */
+    width: 1400px;   /* tweak if you want wider/narrower */
+    height: 800px;   /* tweak if you want taller/shorter */
+
+    transform-origin: center center;
+    transform: translate(-50%, -50%);
 }
 
 .pokertable,
@@ -170,97 +177,9 @@ h1{
 }
 
 
-#faszmano {
-    position: absolute;
-    top: 15px;          /* vertical distance from top of page */
-    right: 5px;       /* distance from right side */
-    background: transparent;
-    border: none;
-    padding: 0;
-    cursor: pointer;
-    z-index: 9999;     
-    transform: translateY(-20px); /* move even higher */
-}
-#faszmano img {
-    width: 20px;
-    height: auto;
-    background: transparent !important;
-    box-shadow: none !important;
-}
-
-
-@media (min-width: 1700px) {
-  :root {
-    --card-size: 170px;
-  }
-  .table-opp,
-  .table {
-    width: 65vw;
-  }
-  .table-dealing {
-    width: 38vw;
-  }
-}
-@media (max-width: 1699px) {
-  :root {
-    --card-size: 150px;
-  }
-}
-@media (max-width: 1399px) {
-  :root {
-    --card-size: 120px;
-  }
-  .table-opp,
-  .table {
-    width: 80vw;
-  }
-  .table-dealing {
-    width: 48vw;
-    bottom: 25vh;
-  }
-  .flexy,
-  .flexy-opp {
-    gap: 30px;
-  }
-}
-@media (max-width: 1099px) {
-  :root {
-    --card-size: 100px;
-  }
-  .table-opp,
-  .table {
-    width: 90vw;
-  }
-  .table-dealing {
-    width: 55vw;
-    bottom: 26vh;
-  }
-  .flexy,
-  .flexy-opp {
-    gap: 22px;
-  }
-}
-@media (max-width: 799px) {
-  :root {
-    --card-size: 78px;
-  }
-  .table-opp {
-    top: 4vh;
-    width: 95vw;
-    left: 2vw;
-  }
-  .table {
-    bottom: 4vh;
-    width: 95vw;
-    right: 2vw;
-  }
-  .table-dealing {
-    width: 65vw;
-    left: 17vw;
-    bottom: 22vh;
-  }
-  .flexy,
-  .flexy-opp {
-    gap: 14px;
-  }
+@media (max-width: 1400px), (max-height: 800px) {
+    .container {
+        transform: translate(-50%, -50%)
+                   scale( min(100vw / 1400, 100vh / 800) );
+    }
 }
