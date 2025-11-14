@@ -1,6 +1,6 @@
 html, body {
     height: 100%;
-    overflow: hidden;   /* ⛔ disables scrolling */
+    overflow: hidden;
 }
 body {
   position: relative;
@@ -11,133 +11,173 @@ body {
   color: #e2e0dc;
   background-color: #212324;
 }
-.info{
+
+.titulum{
     position: absolute;
-    
-    
+    top: 50px;          /* vertical distance from top of page */
+    right: 100px;       /* distance from right side */
 }
 h1{
     text-align: center;
 }
-h2{
-    text-align: center;
-    size: 40px;
-    color: B3AEA5;
-    text-shadow: 2px;
-}
-.container{
-    display: flex;
-    flex-direction: column;
-    gap: 50px;
-}
 
-.cards{
-    height: 150px !important;
-    width: auto !important;
-     box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
-}
-#cards5{
-  position: absolute;
-   box-shadow: 20px 20px 600px rgba(0, 0, 0, 0.3);
-}
-#cards6{
-  position: absolute;
-  transform: rotate(10deg);
-   box-shadow: 20px 20px 60px rgba(0, 0, 0, 0.3);
-}
-#cards7{
-  position: absolute;
-  transform: rotate(15deg);
-   box-shadow: 20p 20px 60px rgba(0, 0, 0, 0.3);
-}
-#cards8{
-  position: absolute;
-  transform: rotate(-10deg);
-   box-shadow: 20px 20px 60px rgba(0, 0, 0, 0.3);
-}
 
-.table {
-    position: relative;          /* cards are positioned relative to this */
-    width: 1100px;               /* pick a width you like */
-    margin: 40px auto;           /* center table on the page */
-}
-
-/* poker table image fills the .table box */
-#pokertable {
-    display: block;
-    width: 100%;
-    height: auto;
-}
-/* overlay that covers the entire table */
-.cardandquestion {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-
-    /*flex container */
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    gap: 40px;              /* space between cards row and question */
-}
-/* row of cards */
-.flexy {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    gap: 50px;
-}
 .cards {
     height: 150px;
     width: auto;
     box-shadow: 20 20px 60px rgba(0, 0, 0, 0.3);
       background: #066ff91a;
 } 
-.question h2 {
-    margin: 0;
-    color: #f5f5f5;               /* adjust to match your design */
-    font-family: "Courier New", monospace;
+
+.container {
+    position: relative;
+    width: 100%;
+    height: 100vh;        /* fill screen height */
 }
 
 
+/* RED */
+.table-opp {
+    position: absolute;
+    top: 20px;            /* distance from top */
+    left: 0px;           /* distance from left */
+    width: 1200px;
+}
+/* poker table image fills the .table box */
+.pokertable-opp {
+    display: block;
+    width: 90%;
+    height: auto;
+}
+.flexy-opp {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+
+    display: flex;
+    flex-direction: row;          /* row of opponent cards */
+    align-items: center;
+    justify-content: center;
+    gap: 40px;                    /* distance between opponent cards */
+    transform: translate(-75px, -100px);   /* move left + higher, like .flexy */
+}
 
 
-.corner-button {
-    position: fixed;
-    padding: 30px 40px;
-    background-color: #202223;
-    color: #fff;
-    border: 2px solid #fff;
-    border-radius: 20px;
+/* GREEN */
+.table {
+    position: absolute;
+    right: 10px;          /* distance from right */
+    bottom: 30px;         /* distance from bottom */
+    width: 1200px;
 }
-.top-left {
-    top: 80px;
-    left: 80px;
+.pokertable {
+    display: block;
+    width: 100%;
+    height: auto;
+}
+/* row containing pile + hand */
+/* row containing pile + hand (also acts as overlay) */
+.flexy {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+
+    display: flex;
+    /* row of cards */
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    gap: 40px;                 /* distance between the 4 cards */
+    transform: translate(-40px, 0px);   /* move cards left */
 }
 
-.top-right {
-    top: 80px;
-    right: 80px;
-}
-.bottom-left {
+/* .hand no longer needed – you can delete it */
+
+
+/* BEIGE */
+.table-dealing {
+    position: absolute;
+    left: -45px; 
     bottom: 80px;
-    left: 80px;
+    width: 600px;
+    transform: rotate(60deg);
+}
+.pokertable-dealing {
+    display: block;
+    width: 100%;
+    height: auto;
+}
+/* row of two dealing piles – acts as full overlay on beige smudge */
+.flexy-dealing {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+
+    display: flex;
+    flex-direction: column;          /* two piles next to each other */
+    align-items: center;
+    justify-content: center;
+    gap: 80px;                    /* distance between two piles */
+    transform: translate(0px, 0px); /* move piles up a bit – tweak if needed */
+}
+/* each pile (stack of 5 cards) */
+.card-pile-dealing-new {
+    position: relative;
+    left: 0px;
+    top: 0px;
+    transform: translate(-250px, 0px) rotate(-60deg);
+}
+.card-pile-dealing-used {
+    position: relative;
+    left: 0px;
+    top: 0px;
+    transform: translate(-30px, 20px) rotate(-60deg);
 }
 
-.bottom-right {
-    bottom: 80px;
-    right: 80px;
+#cards5{
+  position: absolute;
 }
-#counter {
-    position: absolute; /* position relative to .table */
-    top: 77%;           /* center vertically on the table */
-    left: 50%;          /* center horizontally on the table */
-    transform: translate(-50%, -50%); /* center precisely */
-    font-size: 40px;
-    color: rgb(225, 208, 114);
-    font-weight: initial;
-    pointer-events: none; /* optional: ignore clicks */
+#cards6{
+  position: absolute;
+  transform: rotate(5deg) translateX(8px);
 }
+#cards7{
+  position: absolute;
+  transform: rotate(0deg) translateX(5px);
+}
+#cards8{
+  position: absolute;
+  transform: rotate(-5deg) translateX(-5px);
+}
+#cards9{
+  position: absolute;
+  transform: rotate(3deg);
+}
+
+
+
+
+#faszmano {
+    position: absolute;
+    top: 15px;          /* vertical distance from top of page */
+    right: 5px;       /* distance from right side */
+    background: transparent;
+    border: none;
+    padding: 0;
+    cursor: pointer;
+    z-index: 9999;     
+    transform: translateY(-20px); /* move even higher */
+}
+#faszmano img {
+    width: 20px;
+    height: auto;
+    background: transparent !important;
+    box-shadow: none !important;
+}
+

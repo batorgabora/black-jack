@@ -1,4 +1,3 @@
-
 const cardImages = [
   // Clubs
   'assets/cards/clubs/clubs-2.svg',
@@ -61,17 +60,29 @@ const cardImages = [
   'assets/cards/spades/spades-queen.svg',
 ];
 
-const questions=[
-    "Will the card be Red or Black?",
-    "Will the card's value be Higher or Lower",
-    "Will the card fall between or outside the values of your first two cards",
-    "Guess the suit  of your fourth card",
-];
-const counter = document.getElementById("counter");
-counter.innerHTML = "nigger";
 
-const imageOne = document.getElementById("card1");
-imageOne.addEventListener("click", function() {
-  imageOne.src = cardImages[4];
+const cardone = document.getElementById("card1");
+let lastCard = null;
+cardone.addEventListener("click", () => {
+    let randomCard;
+    do {
+        const randomIndex = Math.floor(Math.random() * cardImages.length);
+        randomCard = cardImages[randomIndex];
+    } while (randomCard === lastCard);
+
+    cardone.src = randomCard;
+    lastCard = randomCard;
 });
 
+const cardtwo = document.getElementById("card2");
+let lastcardtwo = null;
+cardtwo.addEventListener("click", () => {
+    let randomCard;
+    do {
+        const randomIndex = Math.floor(Math.random() * cardImages.length);
+        randomCard = cardImages[randomIndex];
+    } while (randomCard === lastcardtwo);
+
+    cardtwo.src = randomCard;
+    lastcardtwo = randomCard;
+});
