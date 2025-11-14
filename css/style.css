@@ -197,17 +197,17 @@ body {
     :root { --card-size: 140px; }
 }
 @media (max-width: 1300px) {
-    :root { --card-size: 120px; }
+    :root { --card-size: 130px; }
 }
 @media (max-width: 1150px) {
-    :root { --card-size: 105px; }
+    :root { --card-size: 120px; }
 }
 @media (max-width: 1000px) {
-    :root { --card-size: 95px; }
+    :root { --card-size: 105px; }
 }
 @media (max-width: 900px) {
-    :root { --card-size: 80px; }
+    :root { --card-size: 95px; }
 }
 @media (max-width: 800px) {
-    :root { --card-size: 70px; }
+    :root { --card-size: 80px; }
 }

@@ -91,7 +91,7 @@ const new_four  = document.getElementById("new_four");
 [
   card_one_me, card_two_me, card_three_me, card_four_me,
   card_one_opp, card_two_opp, card_three_opp, card_four_opp,
-  used_one, used_two, used_three, used_four
+  used_one, used_two, used_three
 ].forEach(el => el.src = "");
 
 
