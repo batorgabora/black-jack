@@ -62,6 +62,10 @@ const cardimages = [
 
 let deck = [...cardimages];
 
+let opp_points = 0;
+let me_points = 0;
+
+const mizu = document.getElementById("mizu");
 
 const card_one_me   = document.getElementById("card_one_me");
 const card_two_me   = document.getElementById("card_two_me");
@@ -104,11 +108,16 @@ function draw() {
   return card;
 }
 
+
 function firstdeal() {
   card_one_me.src   = draw();
-  card_two_me.src   = draw();
+  me_points += valuate(card_one_me.src)
   card_one_opp.src  = draw();
+  opp_points += valuate(card_one_opp.src)
+  card_two_me.src   = draw();
+  me_points += valuate(card_two_me.src)
   card_two_opp.src  = draw();
+  opp_points += valuate(card_two_opp.src)
 
   // if you want, you can also immediately fill used/new piles later with drawCard()
   // used_one.src = drawCard();
@@ -117,3 +126,28 @@ function firstdeal() {
 
 // run immediately (since script is loaded with defer)
 firstdeal();
+
+
+function valuate(cardsrc) {
+  if (!cardsrc) {throw new Error("valuate(): no card source provided");}
+  // face cards and 10 are worth 10
+  if (
+    cardsrc.includes("queen") ||
+    cardsrc.includes("jack")  ||
+    cardsrc.includes("king")  ||
+    cardsrc.includes("-10")
+  ) {
+    return 10;
+  }
+  // ace – you can later decide 1 or 11 depending on hand logic
+  if (cardsrc.includes("ace")) {
+    return 11;
+  }
+  // numeric cards 2–9: look for "-2.", "-3.", … "-9."
+  for (let i = 2; i <= 9; i++) {
+    if (cardsrc.includes(`-${i}.`)) {
+      return i;
+    }
+  }
+  throw new Error("valuate(): unknown card value for src = " + cardsrc);
+}

@@ -28,7 +28,7 @@ body {
 }
 
 :root {
-    --card-size: 150px;   /* default desktop size */
+    --card-size: 170px;   /* default desktop size */
 }
 
 .cards {
@@ -191,10 +191,10 @@ body {
 }
 
 @media (max-width: 1550px) {
-    :root { --card-size: 140px; }
+    :root { --card-size: 150px; }
 }
 @media (max-width: 1450px) {
-    :root { --card-size: 135px; }
+    :root { --card-size: 140px; }
 }
 @media (max-width: 1300px) {
     :root { --card-size: 120px; }
