@@ -1,6 +1,6 @@
 // ---------------- helpers for <img> slots ----------------
 function hasCard(img) {
-  return !!img.getAttribute("src");
+  return !!img.getAttribute("src");     //if there is something true, otherwise false
 }
 function clearCard(img) {
   setCard(img, "");
@@ -10,7 +10,7 @@ function setCard(img, src) {
 }
 
 // update one used slot
-function syncUsedSlot(img, src) {
+function syncUsedSlot(img, src) {           //visualizes used pile
   if (!src) {
     clearCard(img);
     img.style.opacity   = "0";
@@ -21,9 +21,8 @@ function syncUsedSlot(img, src) {
     img.style.boxShadow = ""; // let .cards apply its own shadow
   }
 }
-
 // sync usedPile -> used_* images
-function syncUsedImages() {
+function syncUsedImages() {                 //does it for each visible element in the slot (just 4)
   syncUsedSlot(used_one,   usedPile[0]);
   syncUsedSlot(used_two,   usedPile[1]);
   syncUsedSlot(used_three, usedPile[2]);

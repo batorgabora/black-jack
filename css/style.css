@@ -313,5 +313,47 @@ img[src=""] {
 @media (max-width: 800px) {
     :root { --card-size: 80px; }
     :root { --faszmano-size: 65px; }
-    :root { --polaroid-size: px; }
+    :root { --polaroid-size: 45px; }
+}
+@media (max-width: 600px) {
+    :root { --card-size: 70px; }
+    :root { --faszmano-size: 60px; }
+    :root { --polaroid-size: 40px; }
+    .table-opp{
+        position: absolute;
+        top: 2vh;
+        left: 2vw;
+    }
+    .flexy-opp {
+        position: absolute;
+        transform: translate(0, -4vh);   /* move left + higher, like .flexy */
+    }
+    .table{
+        position: absolute;
+        top: 25vh;
+        left: 25vw;
+    }
+    .flexy {
+        transform: translate(0, -25vh);   /* move cards left */
+    }
+    .table-dealing {
+        position: absolute;
+        left: 3vw;
+        bottom: 50vh;
+    }
+    .flexy-dealing {
+        transform: translate(-2vw, -3vh); /* move piles up a bit – tweak if needed */
+    }
+    #hitme {
+        top: 43vh; 
+        right: 40vw;
+        cursor: pointer;
+        transform: rotate(170deg);
+    }
+    #stand {
+        top: 41vh; 
+        right: 30vw;
+        cursor: pointer;
+        transform: rotate(190deg);
+    }
 }

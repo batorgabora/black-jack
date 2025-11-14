@@ -119,7 +119,7 @@ let usedPile = [];
 
 // ---------------- initial clear ----------------
 
-[...myCards, ...oppCards].forEach(clearCard);
+[...myCards, ...oppCards].forEach(clearCard);   //clears everything in the beginning
 
 usedPile = [];
 syncUsedImages();
@@ -128,33 +128,32 @@ syncUsedImages();
 
 function draw() {
   if (deck.length === 0) {
-    deck = [...cardimages];
+    deck = [...cardimages];                           //if there is to draw, draws, if not reshuffles
   }
   const index = Math.floor(Math.random() * deck.length);
   const card  = deck[index];
-  deck.splice(index, 1);
+  deck.splice(index, 1);                              //removes drawn card from deck
   return card;
 }
 
 // ---------------- game start ----------------
-
 firstdeal();
 
 // HIT: you draw one, opponent maybe draws one
 faszmano.addEventListener("click", function() {
-  if (stood) return;              // can't hit after standing
+  if (stood) return;                  // can't hit after standing
   hitme();
-  checkStatus();
+  checkStatus();                      //is there a winner?
 });
 
 // STAND: opponent finishes their whole turn
 polaroid.addEventListener("click", function() {
   if (stood) return;
   stood = true;
-  setCard(card_one_opp, hidden)
+  setCard(card_one_opp, hidden)             //reveals opponent's first card
   setTimeout(() => {
-    drawopponent(true);
-    checkStatus();
+    drawopponent(true);                     //opponent draws (if he can, check function to see)
+    checkStatus();                          //who is the winner
   }, 2500);
 });
 
@@ -164,8 +163,7 @@ function firstdeal() {
   stood = false;
   mizu.innerHTML = "";
 
-  // clear table slots
-  [...myCards, ...oppCards].forEach(clearCard);
+  clear();
 
   me_points  = 0;
   opp_points = 0;
@@ -277,7 +275,7 @@ function clear() {
 function hitme() {
   if (stood || me_points >= 21) return;
   const nextMySlot = myCards.find(c => !hasCard(c));
-  if (!nextMySlot) return;
+  if (!nextMySlot) return;                              //checks if there is a next slot (5 available now)
   const newCard = draw();
   setCard(nextMySlot, newCard);
   me_points += valuate(newCard);
@@ -285,7 +283,7 @@ function hitme() {
   checkStatus();
 }
 
-// draw once, or (if loop=true) draw until opp_points >= 16 or no slot left
+// draw once, or (if loop=true) draw until opp_points >= 16 or no slot left but only second option is what ewe need actually (check polaroid button)
 function drawopponent(loop = false) {
   do {
     if (opp_points >= 16) break;
