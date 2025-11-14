@@ -16,11 +16,16 @@ body {
     position: absolute;
     top: 5vh;          /* vertical distance from top of page */
     right: 5vw;       /* distance from right side */
+    z-index: 9999;        /* ALWAYS on top */
 }
-h1{
-    text-align: center;
+.titulum h1 {
+    font-size: 3vw;      /* scales smoothly with screen width */
+    margin: 0;
 }
-
+.titulum p {
+    font-size: 1.5vw;
+    margin: 0;
+}
 
 :root {
     --card-size: 150px;   /* default desktop size */
@@ -74,7 +79,7 @@ h1{
     align-items: center;
     justify-content: center;
     gap: 3vw;                    /* distance between opponent cards */
-    transform: translate(-3vw, -12vh);   /* move left + higher, like .flexy */
+    transform: translate(-3vw, -10vh);   /* move left + higher, like .flexy */
 }
 
 
@@ -112,8 +117,8 @@ h1{
 /* BEIGE */
 .table-dealing {
     position: absolute;
-    left: 0vw;
-    bottom: 15vh;
+    left: -2vw;
+    bottom: 13vh;
     width: 40vw;
     max-width:50vw;
     transform: rotate(60deg);
@@ -150,34 +155,57 @@ h1{
     top: 0vh;
     transform: translate(-2vw, 3vh) rotate(-60deg);
 }
+/* stack cards inside each dealing pile on top of each other */
+.card-pile-dealing-new img,
+.card-pile-dealing-used img {
+    position: absolute;
+    top: 0;
+    left: 0;
+}
+.cardsleft {
+    transform: rotate(-6deg);
+}
+#new_one{
+    transform: translate(0.1vw, 0.4vh) rotate(3deg);
+}
+#new_two{
+    transform: translate(0.2vw, 0.8vh) rotate(-2deg);
+}
+#new_three{
+    transform: translate(-0.2vw, 0.6vh) rotate(-3deg);
+}
+#new_four{
+    transform: translate(0.1vw, -0.4vh) rotate(2deg);
+}
+#used_one{
+    transform: translate(0.9vw, 0.9vh) rotate(7deg);
+}
+#used_two{
+    transform: translate(0.7vw, 0.8vh) rotate(-2deg);
+}
+#used_three{
+    transform: translate(-1.5vw, 0.6vh) rotate(-7deg);
+}
+#used_four{
+    transform: translate(1vw, -1.2vh) rotate(4deg);
+}
 
-#cards5{
-  position: absolute;
+@media (max-width: 1550px) {
+    :root { --card-size: 140px; }
 }
-#cards6{
-  position: absolute;
-  transform: rotate(5deg) translateX(8px);
+@media (max-width: 1450px) {
+    :root { --card-size: 135px; }
 }
-#cards7{
-  position: absolute;
-  transform: rotate(0deg) translateX(5px);
-}
-#cards8{
-  position: absolute;
-  transform: rotate(-5deg) translateX(-5px);
-}
-#cards9{
-  position: absolute;
-  transform: rotate(3deg);
-}
-
 @media (max-width: 1300px) {
-    :root { --card-size: 100px; }
+    :root { --card-size: 120px; }
 }
-@media (max-width: 1100px) {
-    :root { --card-size: 90px; }
+@media (max-width: 1150px) {
+    :root { --card-size: 105px; }
 }
-@media (max-width: 950px) {
+@media (max-width: 1000px) {
+    :root { --card-size: 95px; }
+}
+@media (max-width: 900px) {
     :root { --card-size: 80px; }
 }
 @media (max-width: 800px) {
