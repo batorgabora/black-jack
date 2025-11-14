@@ -10,11 +10,17 @@
 <body>
     <div class="titulum">
         <h1>huszonegy</h1>
-        <p>egy meg húsz.</p>
-        <br>
+        <p><b>egy meg húsz.</b></p>
+        <br><br>
         <p id="mizu">eddig nem sok történt</p>
+        <br>
+        <p id="opp_value">0</p>
+        <p>|</p>
+        <p id="my_value">0</p>
     </div>
     <div class="container">
+        <button id="hitme"></button>
+        <button id="stand"></button>
         <div class="table-opp">
             <img src="assets/smudge-red.png" alt="pokertable" class="pokertable-opp">
             <div class="flexy-opp">
@@ -22,6 +28,7 @@
                 <img src="assets/cards/diamonds/diamonds-5.svg"  alt="" class="cards" id="card_two_opp">
                 <img src="assets/cards/clubs/clubs-jack.svg"     alt="" class="cards" id="card_three_opp">
                 <img src="assets/cards/spades/spades-8.svg"      alt="" class="cards" id="card_four_opp">
+                <img src="assets/cards/spades/spades-8.svg"      alt="" class="cards" id="card_five_opp">
             </div>
         </div>
         <div class="table">
@@ -31,6 +38,7 @@
                 <img src="assets/cards/diamonds/diamonds-5.svg"  alt="" class="cards" id="card_two_me">
                 <img src="assets/cards/clubs/clubs-jack.svg"     alt="" class="cards" id="card_three_me">
                 <img src="assets/cards/spades/spades-8.svg"      alt="" class="cards" id="card_four_me">
+                <img src="assets/cards/spades/spades-8.svg"      alt="" class="cards" id="card_five_me">
             </div>
         </div>
         <div class="table-dealing">
@@ -51,6 +59,7 @@
             </div>
         </div>
     </div>    
+    <script src="js/helper.js" defer></script>
     <script src="js/code.js" defer></script>
 </body>
 </html>
