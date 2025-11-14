@@ -60,8 +60,7 @@ const cardimages = [
   'assets/cards/spades/spades-queen.svg',
 ];
 
-let deck = [...cardImages];
-
+let deck = [...cardimages];
 
 
 const card_one_me   = document.getElementById("card_one_me");
@@ -88,8 +87,7 @@ const new_four  = document.getElementById("new_four");
 [
   card_one_me, card_two_me, card_three_me, card_four_me,
   card_one_opp, card_two_opp, card_three_opp, card_four_opp,
-  used_one, used_two, used_three, used_four,
-  new_one, new_two, new_three, new_four
+  used_one, used_two, used_three, used_four
 ].forEach(el => el.src = "");
 
 
