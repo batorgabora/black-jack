@@ -22,31 +22,40 @@ h1{
 }
 
 
+:root {
+    --card-size: 150px;   /* default desktop size */
+}
+
 .cards {
-    height: 150px;
+    height: var(--card-size);
     width: auto;
-    box-shadow: 20 20px 60px rgba(0, 0, 0, 0.3);
-      background: #066ff91a;
-} 
+    box-shadow: 0px 12px 35px rgba(0, 0, 0, 0.45);
+    border-radius: 8px;
+}
 
 .container {
     position: relative;
     width: 100%;
-    height: 100vh;        /* fill screen height */
+    height: 100vh;
 }
 
-
+.pokertable,
+.pokertable-opp,
+.pokertable-dealing {
+    opacity: 1; /* 0 to 1 */
+}
 /* RED */
 .table-opp {
     position: absolute;
-    top: 20px;            /* distance from top */
-    left: 0px;           /* distance from left */
-    width: 1200px;
+    top: 2vh;
+    left: 2vw;
+    max-width: 1200px;
+    width: 75vw;          /* scales with viewport */
 }
 /* poker table image fills the .table box */
 .pokertable-opp {
     display: block;
-    width: 90%;
+    width: 100%;
     height: auto;
 }
 .flexy-opp {
@@ -68,9 +77,10 @@ h1{
 /* GREEN */
 .table {
     position: absolute;
-    right: 10px;          /* distance from right */
-    bottom: 30px;         /* distance from bottom */
-    width: 1200px;
+    bottom: 2vh;
+    right: 2vw;
+    width: 75vw;
+    max-width: 1200px;
 }
 .pokertable {
     display: block;
@@ -95,15 +105,14 @@ h1{
     transform: translate(-40px, 0px);   /* move cards left */
 }
 
-/* .hand no longer needed – you can delete it */
-
 
 /* BEIGE */
 .table-dealing {
     position: absolute;
-    left: -45px; 
-    bottom: 80px;
-    width: 600px;
+    left: -3vw;
+    bottom: 10vh;
+    width: 40vw;
+    max-width: 600px;
     transform: rotate(60deg);
 }
 .pokertable-dealing {
@@ -161,8 +170,6 @@ h1{
 }
 
 
-
-
 #faszmano {
     position: absolute;
     top: 15px;          /* vertical distance from top of page */
@@ -181,3 +188,79 @@ h1{
     box-shadow: none !important;
 }
 
+
+@media (min-width: 1700px) {
+  :root {
+    --card-size: 170px;
+  }
+  .table-opp,
+  .table {
+    width: 65vw;
+  }
+  .table-dealing {
+    width: 38vw;
+  }
+}
+@media (max-width: 1699px) {
+  :root {
+    --card-size: 150px;
+  }
+}
+@media (max-width: 1399px) {
+  :root {
+    --card-size: 120px;
+  }
+  .table-opp,
+  .table {
+    width: 80vw;
+  }
+  .table-dealing {
+    width: 48vw;
+    bottom: 25vh;
+  }
+  .flexy,
+  .flexy-opp {
+    gap: 30px;
+  }
+}
+@media (max-width: 1099px) {
+  :root {
+    --card-size: 100px;
+  }
+  .table-opp,
+  .table {
+    width: 90vw;
+  }
+  .table-dealing {
+    width: 55vw;
+    bottom: 26vh;
+  }
+  .flexy,
+  .flexy-opp {
+    gap: 22px;
+  }
+}
+@media (max-width: 799px) {
+  :root {
+    --card-size: 78px;
+  }
+  .table-opp {
+    top: 4vh;
+    width: 95vw;
+    left: 2vw;
+  }
+  .table {
+    bottom: 4vh;
+    width: 95vw;
+    right: 2vw;
+  }
+  .table-dealing {
+    width: 65vw;
+    left: 17vw;
+    bottom: 22vh;
+  }
+  .flexy,
+  .flexy-opp {
+    gap: 14px;
+  }
+}
