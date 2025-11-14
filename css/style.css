@@ -58,6 +58,7 @@ body {
 .pokertable-opp,
 .pokertable-dealing {
     opacity: 1; /* 0 to 1 */
+    pointer-events: none;
 }
 /* RED */
 .table-opp {
@@ -345,15 +346,17 @@ img[src=""] {
         transform: translate(-2vw, -3vh); /* move piles up a bit – tweak if needed */
     }
     #hitme {
-        top: 43vh; 
+        top: 42.3vh; 
         right: 40vw;
         cursor: pointer;
         transform: rotate(170deg);
+        z-index: 20;
     }
     #stand {
         top: 41vh; 
         right: 30vw;
         cursor: pointer;
-        transform: rotate(190deg);
+        transform: rotate(184deg);
+        z-index: 20;
     }
 }
