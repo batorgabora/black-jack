@@ -317,7 +317,7 @@ img[src=""] {
     :root { --polaroid-size: 45px; }
 }
 @media (max-width: 600px) {
-    :root { --card-size: 70px; }
+    :root { --card-size: 50px; }
     :root { --faszmano-size: 60px; }
     :root { --polaroid-size: 40px; }
     .table-opp{
