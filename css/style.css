@@ -30,9 +30,9 @@ body {
 
 :root {
     --card-size: 180px;   /* default desktop size */
-    --faszmano-size: 100px;
+    --faszmano-size: 110px;
     --polaroid-size: 75px;
-    --smiley-size: 100px;
+    --vinyl-size: 100px;
 }
 
 .cards {
@@ -152,7 +152,7 @@ body {
     position: relative;
     left: 0vw;
     top: 0vh;
-    transform: translate(-16vw, 0vh) rotate(-60deg);
+    transform: translate(-17vw, 0vh) rotate(-60deg);
 }
 .card-pile-dealing-used {
     position: relative;
@@ -250,11 +250,12 @@ img[src=""] {
     height: var(--faszmano-size);
 
     position: absolute;
-    top: 39vh; 
-    right: 25vw;
+    top: 42vh;
+    right: 32vw;
 
     filter: drop-shadow(0 0 15px #000000);
     transform: rotate(-17deg);
+    z-index: 9999;
 }
 
 #stand {
@@ -272,11 +273,34 @@ img[src=""] {
     height: var(--polaroid-size);
 
     position: absolute;
-    top: 42vh; 
-    right: 20vw;
+    top: 44vh; 
+    right: 25vw;
+
+    filter: drop-shadow(0 0 15px #000000);
+    transform: rotate(13deg);
+    z-index: 9999;
+}
+#split {
+    background: transparent;
+    border: none;
+    padding: 0;
+    cursor: pointer;
+
+    background-image: url("../assets/vinyl.png");
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center;
+
+    width: var(--vinyl-size);
+    height: var(--vinyl-size);
+
+    position: absolute;
+    top: 43vh; 
+    right: 14vw;
 
     filter: drop-shadow(0 0 15px #000000);
     transform: rotate(20deg);
+    z-index: 9999;
 }
 
 
@@ -285,41 +309,48 @@ img[src=""] {
     :root { --card-size: 150px; }
     :root { --faszmano-size: 100px; }
     :root { --polaroid-size: 75px; }
+    :root { --vinyl-size: 100px; }
 }
 @media (max-width: 1450px) {
     :root { --card-size: 140px; }
     :root { --faszmano-size: 95px; }
     :root { --polaroid-size: 70px; }
+    :root { --vinyl-size: 95px; }
 }
 @media (max-width: 1300px) {
     :root { --card-size: 130px; }
     :root { --faszmano-size: 90px; }
     :root { --polaroid-size: 70px; }
+    :root { --vinyl-size: 90px; }
 }
 @media (max-width: 1150px) {
     :root { --card-size: 120px; }
     :root { --faszmano-size: 80px; }
     :root { --polaroid-size: 60px; }
+    :root { --vinyl-size: 80px; }
 }
 @media (max-width: 1000px) {
     :root { --card-size: 105px; }
     :root { --faszmano-size: 75px; }
     :root { --polaroid-size: 55px; }
+    :root { --vinyl-size: 75px; }
 }
 @media (max-width: 900px) {
     :root { --card-size: 95px; }
     :root { --faszmano-size: 70px; }
     :root { --polaroid-size: 50px; }
+    :root { --vinyl-size: 70px; }
 }
 @media (max-width: 800px) {
     :root { --card-size: 80px; }
     :root { --faszmano-size: 65px; }
     :root { --polaroid-size: 45px; }
+    :root { --vinyl-size: 65px; }
 }
 @media (max-width: 600px) {
     :root { --card-size: 50px; }
     :root { --faszmano-size: 60px; }
-    :root { --polaroid-size: 40px; }
+    :root { --polaroid-size: 50px; }
     .table-opp{
         position: absolute;
         top: 2vh;
