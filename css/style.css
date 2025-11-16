@@ -250,14 +250,13 @@ img[src=""] {
     height: var(--faszmano-size);
 
     position: absolute;
-    top: 39vh; 
-    right: 27vw;
+    top: 42vh;
+    right: 32vw;
 
     filter: drop-shadow(0 0 15px #000000);
-    transform: rotate(-12deg);
+    transform: rotate(-17deg);
     z-index: 9999;
 }
-
 
 #stand {
     background: transparent;
@@ -274,11 +273,33 @@ img[src=""] {
     height: var(--polaroid-size);
 
     position: absolute;
-    top: 42vh; 
-    right: 18vw;
+    top: 44vh; 
+    right: 25vw;
 
     filter: drop-shadow(0 0 15px #000000);
-    transform: rotate(17deg);
+    transform: rotate(13deg);
+    z-index: 9999;
+}
+#split {
+    background: transparent;
+    border: none;
+    padding: 0;
+    cursor: pointer;
+
+    background-image: url("../assets/vinyl.png");
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center;
+
+    width: var(--vinyl-size);
+    height: var(--vinyl-size);
+
+    position: absolute;
+    top: 43vh; 
+    right: 14vw;
+
+    filter: drop-shadow(0 0 15px #000000);
+    transform: rotate(20deg);
     z-index: 9999;
 }
 
