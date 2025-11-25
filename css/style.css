@@ -471,51 +471,117 @@ img[src=""] {
 }
 @media (max-width: 800px) {
     :root { --card-size: 80px; }
-    :root { --faszmano-size: 65px; }
-    :root { --polaroid-size: 45px; }
-    :root { --vinyl-size: 65px; }
+    :root { --faszmano-size: 70px; }
+    :root { --polaroid-size: 50px; }
+    :root { --vinyl-size: 70px; }
 }
 @media (max-width: 600px) {
-    :root { --card-size: 50px; }
-    :root { --faszmano-size: 60px; }
-    :root { --polaroid-size: 50px; }
-    .table-opp{
+    /* smaller cards & buttons */
+    :root { 
+        --card-size: 75px;
+        --faszmano-size: 85px;
+        --polaroid-size: 65px;
+        --vinyl-size: 200px;
+        --thinker-size: 60px;
+    }
+
+    /* OPPONENT (red) – top */
+    .table-opp {
         position: absolute;
-        top: 2vh;
-        left: 2vw;
+        top: 3vh;
+        left: 50%;
+        width: 90vw;
+        max-width: 90vw;
+        transform: translateX(-50%);
     }
     .flexy-opp {
-        position: absolute;
-        transform: translate(0, -4vh);   /* move left + higher, like .flexy */
+        transform: translate(-8vw, -7vh);
     }
-    .table{
-        position: absolute;
-        top: 25vh;
-        left: 25vw;
+    .titulum{
+        top: 40vh;
+        right: 10vw;
     }
-    .flexy {
-        transform: translate(0, -25vh);   /* move cards left */
-    }
+
+    /* DEALING (beige) – middle */
     .table-dealing {
         position: absolute;
-        left: 3vw;
-        bottom: 50vh;
+        left: 30%;
+        bottom: 45vh;
+        width: 55vw;
+        max-width: 55vw;
+        transform: translateX(-50%) rotate(60deg);
     }
     .flexy-dealing {
-        transform: translate(-2vw, -3vh); /* move piles up a bit – tweak if needed */
+        transform: translate(-4vw, -2vh);
     }
+
+    /* PLAYER (green) – bottom */
+    .table {
+        position: absolute;
+        bottom: 15vh;
+        left: 50%;
+        right: auto;
+        width: 96vw;
+        max-width: 96vw;
+        transform: translateX(-50%);
+    }
+    .flexy {
+        transform: translate(-3vw, -2vh);
+    }
+
+    /* BUTTONS – around bottom center */
     #hitme {
-        top: 42.3vh; 
-        right: 40vw;
+        top: auto;
+        bottom: 12vh;
+        left: 18vw;
+        right: auto;
         cursor: pointer;
-        transform: rotate(170deg);
+        transform: rotate(-15deg);
         z-index: 9999;
     }
     #stand {
-        top: 41vh; 
-        right: 30vw;
+        top: auto;
+        bottom: 14vh;
+        right: 20vw;
+        left: auto;
         cursor: pointer;
-        transform: rotate(184deg);
+        transform: rotate(20deg);
         z-index: 9999;
+    }
+    #split {
+        top: auto;
+        bottom: -14vh;
+        left: 50%;
+        right: auto;
+        transform: translateX(-50%) rotate(0deg);
+        z-index: 9999;
+    }
+}
+
+@media (max-width: 700px) {
+    #rules {
+        justify-content: flex-start;    /* start at top, easier to scroll */
+        padding-top: 6vh;
+        font-size: clamp(1rem, 2.2vmin, 1.3rem);
+    }
+
+    #rules > div,
+    .pictext {
+        max-width: 90vw;               /* almost full width on phones */
+    }
+
+    .pictext {
+        flex-direction: column;        /* image above text */
+        align-items: center;
+        text-align: center;
+        gap: 1.5vh;
+    }
+
+    .pictext p {
+        text-align: center;
+    }
+
+    .pictext img {
+        height: clamp(60px, 14vh, 120px);
     }
 }
