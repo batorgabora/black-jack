@@ -1,6 +1,6 @@
 html, body {
     height: 100%;
-    overflow: hidden;
+    overflow-x: hidden;
     margin: 0;
 }
 body {
@@ -440,37 +440,37 @@ img[src=""] {
     :root { --vinyl-size: 100px; }
 }
 @media (max-width: 1450px) {
-    :root { --card-size: 140px; }
+    :root { --card-size: 145px; }
     :root { --faszmano-size: 95px; }
     :root { --polaroid-size: 70px; }
     :root { --vinyl-size: 95px; }
 }
 @media (max-width: 1300px) {
-    :root { --card-size: 130px; }
+    :root { --card-size: 140px; }
     :root { --faszmano-size: 90px; }
     :root { --polaroid-size: 70px; }
     :root { --vinyl-size: 90px; }
 }
 @media (max-width: 1150px) {
-    :root { --card-size: 120px; }
-    :root { --faszmano-size: 80px; }
+    :root { --card-size: 135px; }
+    :root { --faszmano-size: 85px; }
     :root { --polaroid-size: 60px; }
-    :root { --vinyl-size: 80px; }
+    :root { --vinyl-size: 85px; }
 }
 @media (max-width: 1000px) {
-    :root { --card-size: 105px; }
-    :root { --faszmano-size: 75px; }
+    :root { --card-size: 130px; }
+    :root { --faszmano-size: 80px; }
     :root { --polaroid-size: 55px; }
-    :root { --vinyl-size: 75px; }
+    :root { --vinyl-size: 80px; }
 }
 @media (max-width: 900px) {
-    :root { --card-size: 95px; }
-    :root { --faszmano-size: 70px; }
+    :root { --card-size: 125px; }
+    :root { --faszmano-size: 75px; }
     :root { --polaroid-size: 50px; }
-    :root { --vinyl-size: 70px; }
+    :root { --vinyl-size: 75px; }
 }
 @media (max-width: 800px) {
-    :root { --card-size: 80px; }
+    :root { --card-size: 120px; }
     :root { --faszmano-size: 70px; }
     :root { --polaroid-size: 50px; }
     :root { --vinyl-size: 70px; }
@@ -478,7 +478,7 @@ img[src=""] {
 @media (max-width: 600px) {
     /* smaller cards & buttons */
     :root { 
-        --card-size: 75px;
+        --card-size: 60px;
         --faszmano-size: 85px;
         --polaroid-size: 65px;
         --vinyl-size: 200px;
@@ -498,8 +498,17 @@ img[src=""] {
         transform: translate(-8vw, -7vh);
     }
     .titulum{
-        top: 40vh;
+        top: 39vh;
         right: 10vw;
+    }
+    .titulum h1 {
+        font-size: 5vw;      /* scales smoothly with screen width */
+        margin: 0;
+    }
+    .titulum p {
+        font-size: 3vw;
+        margin: 0;
+        text-align: center;
     }
 
     /* DEALING (beige) – middle */
@@ -518,7 +527,7 @@ img[src=""] {
     /* PLAYER (green) – bottom */
     .table {
         position: absolute;
-        bottom: 15vh;
+        bottom: 17vh;
         left: 50%;
         right: auto;
         width: 96vw;
@@ -556,32 +565,27 @@ img[src=""] {
         transform: translateX(-50%) rotate(0deg);
         z-index: 9999;
     }
-}
 
-@media (max-width: 700px) {
     #rules {
         justify-content: flex-start;    /* start at top, easier to scroll */
-        padding-top: 6vh;
-        font-size: clamp(1rem, 2.2vmin, 1.3rem);
+        padding-top: 3vh;
+        font-size: clamp(0.6rem, 1.4vmin, 0.9rem);    
     }
-
     #rules > div,
     .pictext {
         max-width: 90vw;               /* almost full width on phones */
     }
-
     .pictext {
         flex-direction: column;        /* image above text */
         align-items: center;
         text-align: center;
         gap: 1.5vh;
     }
-
     .pictext p {
         text-align: center;
     }
-
     .pictext img {
-        height: clamp(60px, 14vh, 120px);
+        height: clamp(40px, 10vh, 90px);
     }
 }
+
