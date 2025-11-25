@@ -50,7 +50,7 @@ function startSplit(me1, me2) {
 
 function showsplittedstate() {
   my_pointer.innerHTML =
-    splitHands[0].score + " | " + splitHands[1].score;
+    splitHands[0].score + " split " + splitHands[1].score;
 }
 
 /* hitme() split branch */

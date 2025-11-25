@@ -145,3 +145,16 @@ let usedPile = [];
 
 usedPile = [];
 syncUsedImages();
+
+
+// the thinker functionality
+const jokerCard = document.getElementById('info');
+const rulesDiv = document.getElementById('rules');
+
+jokerCard.addEventListener('click', () => {
+    rulesDiv.style.display = 'flex';       // when joker clicked set the display to block, which means the rules show up//
+});
+
+rulesDiv.addEventListener('click', function() {
+  rulesDiv.style.display = 'none';   // close the rules overlay when clicking anywhere on it
+});

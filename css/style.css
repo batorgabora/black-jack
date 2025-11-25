@@ -1,6 +1,7 @@
 html, body {
     height: 100%;
     overflow: hidden;
+    margin: 0;
 }
 body {
   position: relative;
@@ -33,6 +34,7 @@ body {
     --faszmano-size: 110px;
     --polaroid-size: 75px;
     --vinyl-size: 100px;
+    --thinker-size: 100px;
 }
 
 .cards {
@@ -293,28 +295,31 @@ img[src=""] {
     transform: translate(0.4vw, -0.2vh) rotate(3deg);
 }
 
-
-#hitme {
+.buttons{
     background: transparent;
     border: none;
     padding: 0;
     cursor: pointer;
 
-    background-image: url("../assets/faszmano.png");
     background-size: contain;
     background-repeat: no-repeat;
     background-position: center;
 
+    position: absolute;
+
+    filter: drop-shadow(0 0 15px #000000);
+
+    z-index: 9999;
+}
+
+#hitme {
+    background-image: url("../assets/faszmano.png");
     width: var(--faszmano-size);
     height: var(--faszmano-size);
 
-    position: absolute;
     top: 42vh;
     right: 32vw;
-
-    filter: drop-shadow(0 0 15px #000000);
     transform: rotate(11deg);
-    z-index: 9999;
 }
 #hitme.split-first {
     transform: rotate(50deg);
@@ -324,26 +329,13 @@ img[src=""] {
 }
 
 #stand {
-    background: transparent;
-    border: none;
-    padding: 0;
-    cursor: pointer;
-
     background-image: url("../assets/polaroid.png");
-    background-size: contain;
-    background-repeat: no-repeat;
-    background-position: center;
-
     width: var(--polaroid-size);
     height: var(--polaroid-size);
-
-    position: absolute;
+    
     top: 44vh; 
     right: 25vw;
-
-    filter: drop-shadow(0 0 15px #000000);
     transform: rotate(-5deg);
-    z-index: 9999;
 }
 #stand.split-first {
     transform: rotate(53deg);
@@ -353,30 +345,92 @@ img[src=""] {
 }
 
 #split {
-    background: transparent;
-    border: none;
-    padding: 0;
-    cursor: pointer;
-
     background-image: url("../assets/vinyl.png");
-    background-size: contain;
-    background-repeat: no-repeat;
-    background-position: center;
 
     width: var(--vinyl-size);
     height: var(--vinyl-size);
 
-    position: absolute;
     top: 43vh; 
     right: 14vw;
-
-    filter: drop-shadow(0 0 15px #000000);
     transform: rotate(20deg);
-    z-index: 9999;
 }
 #split.can-split {
     background-image: url("../assets/vinyl-broken.png");
 }
+
+#info {
+    background-image: url("../assets/gondolkodo.png");
+    width: var(--thinker-size);
+    height: var(--thinker-size);
+
+    bottom: 2.4vh; 
+    left: -1vw;
+    filter: drop-shadow(0 0 15px #282525);
+}
+
+#info::after { /* infobox with text, and where to position it */
+    content: "gondolkodik tehát van.";
+    position: absolute;
+    left: 2vw;
+    top: -7vh;
+    background-color: rgba(0, 0, 0, 0.895); /*background color of the info box*/
+    color: white;
+    padding: 0.5vw;
+    border-radius: 5px;
+    opacity: 0;
+    font-size: small;
+    text-align: center;
+    font-style: italic;
+    font-family: "Courier New", monospace;
+    z-index: 9999;
+}
+#info:hover::after { /* needed for hover effect to show the text */
+    opacity: 1;
+}
+#rules {
+    display: none;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;      /* <-- TRUE vertical centering */
+    text-align: center;
+
+    position: fixed;
+    inset: 0;
+
+    padding: 0;                   /* <-- remove padding pushing down */
+
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.85);
+
+    font-style: italic;
+    font-size: 1.8vmin;
+    gap: 4vh;
+
+    z-index: 999999 !important;
+    pointer-events: auto;
+}
+#rules > div {
+    max-width: 50vw;            /* narrower, centered block */
+}
+.pictext {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+
+    gap: 2.5vw;                 /* more compact spacing */
+    max-width: 50vw;            /* same width as text blocks */
+}
+.pictext img {
+    width: auto;                 /* slightly smaller */
+    height: 10vh;
+}
+.pictext p {
+    text-align: left;
+    line-height: 1.3;           /* tighter text block */
+}
+
 
 
 @media (max-width: 1550px) {
