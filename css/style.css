@@ -30,11 +30,11 @@ body {
 }
 
 :root {
-    --card-size: 180px;   /* default desktop size */
-    --faszmano-size: 110px;
-    --polaroid-size: 75px;
-    --vinyl-size: 100px;
-    --thinker-size: 100px;
+    --card-size: 10vmax;   /* default desktop size */
+    --faszmano-size: 9vmax;
+    --polaroid-size: 7vmax;
+    --vinyl-size: 8vmax;
+    --thinker-size: 6vmax;
 }
 
 .cards {
@@ -317,7 +317,7 @@ img[src=""] {
     width: var(--faszmano-size);
     height: var(--faszmano-size);
 
-    top: 42vh;
+    bottom: 50vh;
     right: 32vw;
     transform: rotate(11deg);
 }
@@ -333,9 +333,9 @@ img[src=""] {
     width: var(--polaroid-size);
     height: var(--polaroid-size);
     
-    top: 44vh; 
+    bottom: 48vh; 
     right: 25vw;
-    transform: rotate(-5deg);
+    transform: rotate(-8deg);
 }
 #stand.split-first {
     transform: rotate(53deg);
@@ -352,7 +352,7 @@ img[src=""] {
 
     top: 43vh; 
     right: 14vw;
-    transform: rotate(20deg);
+    transform: rotate(30deg);
 }
 #split.can-split {
     background-image: url("../assets/vinyl-broken.png");
@@ -432,49 +432,6 @@ img[src=""] {
 }
 
 
-
-@media (max-width: 1550px) {
-    :root { --card-size: 150px; }
-    :root { --faszmano-size: 100px; }
-    :root { --polaroid-size: 75px; }
-    :root { --vinyl-size: 100px; }
-}
-@media (max-width: 1450px) {
-    :root { --card-size: 145px; }
-    :root { --faszmano-size: 95px; }
-    :root { --polaroid-size: 70px; }
-    :root { --vinyl-size: 95px; }
-}
-@media (max-width: 1300px) {
-    :root { --card-size: 140px; }
-    :root { --faszmano-size: 90px; }
-    :root { --polaroid-size: 70px; }
-    :root { --vinyl-size: 90px; }
-}
-@media (max-width: 1150px) {
-    :root { --card-size: 135px; }
-    :root { --faszmano-size: 85px; }
-    :root { --polaroid-size: 60px; }
-    :root { --vinyl-size: 85px; }
-}
-@media (max-width: 1000px) {
-    :root { --card-size: 130px; }
-    :root { --faszmano-size: 80px; }
-    :root { --polaroid-size: 55px; }
-    :root { --vinyl-size: 80px; }
-}
-@media (max-width: 900px) {
-    :root { --card-size: 125px; }
-    :root { --faszmano-size: 75px; }
-    :root { --polaroid-size: 50px; }
-    :root { --vinyl-size: 75px; }
-}
-@media (max-width: 800px) {
-    :root { --card-size: 120px; }
-    :root { --faszmano-size: 70px; }
-    :root { --polaroid-size: 50px; }
-    :root { --vinyl-size: 70px; }
-}
 @media (max-width: 600px) {
     /* smaller cards & buttons */
     :root { 
