@@ -9,6 +9,42 @@ function setCard(img, src) {
   img.setAttribute("src", src);
 }
 
+function clear() {
+  // move opponent cards to used pile
+  oppCards.forEach(card => {
+    if (hasCard(card)) {
+      pushToUsed(card.getAttribute("src"));
+      clearCard(card);
+    }
+  });
+  // move my cards to used pile
+  myCards.forEach(card => {
+    if (hasCard(card)) {
+      pushToUsed(card.getAttribute("src"));
+      clearCard(card);
+    }
+  });
+
+  me_points = 0;
+  opp_points = 0;
+  my_pointer.innerHTML = me_points;
+  opp_pointer.innerHTML = opp_points;
+  stood = false;
+  mizu.innerHTML = "";
+
+  // kill leftover split state
+  isSplit = false;
+  activeHand = 0;
+
+  // (optional) also reset splitHands if you want them clean:
+  if (typeof splitHands !== "undefined") {
+    splitHands.forEach(h => {
+      h.score = 0;
+      h.stood = false;
+    });
+  }
+}
+
 // update one used slot
 function syncUsedSlot(img, src) {           //visualizes used pile
   if (!src) {

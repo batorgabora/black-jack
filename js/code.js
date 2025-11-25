@@ -2,163 +2,170 @@
 
 function draw() {
   if (deck.length === 0) {
-    deck = [...cardimages];                           //if there is to draw, draws, if not reshuffles
+    deck = [...cardimages]; // if there is nothing to draw, reshuffle
     usedPile = [];
   }
   const index = Math.floor(Math.random() * deck.length);
-  const card  = deck[index];
-  deck.splice(index, 1);                              //removes drawn card from deck
+  const card = deck[index];
+  deck.splice(index, 1); // removes drawn card from deck
   return card;
 }
 
 // ---------------- game start ----------------
 firstdeal();
+// ---------------- game end ----------------
 
-// HIT: you draw one, opponent maybe draws one
-faszmano.addEventListener("click", function() {
-  if (stood) return;                  // can't hit after standing
-  hitme();
-  checkStatus();                      //is there a winner?
+
+
+faszmano.addEventListener("click", function () {
+  if (stood) return;            // can't hit after standing
+  if (!isSplit) {
+    // ---- non-split logic ----
+    if (stood || me_points >= 21) return;
+    const nextMySlot = myCards.find(c => !hasCard(c));
+    if (!nextMySlot) return;
+    const newCard = draw();
+    setCard(nextMySlot, newCard);
+    me_points += valuate(newCard);
+    my_pointer.innerHTML = me_points;
+    checkStatus();
+  } 
+  else {
+    hitsplit();
+  }
 });
 
 // STAND: opponent finishes their whole turn
-polaroid.addEventListener("click", function() {
+polaroid.addEventListener("click", function () {
   if (stood) return;
-  stood = true;
-  setCard(card_one_opp, hidden)             //reveals opponent's first card
-  setTimeout(() => {
-    drawopponent(true);                     //opponent draws (if he can, check function to see)
-    checkStatus();                          //who is the winner
-  }, 2500);
+  if (!isSplit) {
+    // ---- normal stand logic ----
+    stood = true;
+    setCard(card_one_opp, hidden);
+    setTimeout(() => {
+      drawopponent(true);
+      checkStatus();
+    }, 2000);
+  } else {
+    // split mode: only stand current hand
+    const hand = splitHands[activeHand];
+    hand.stood = true;
+    switchsplittedhands();
+  }
 });
 
 // ---------------- main logic ----------------
 
 function firstdeal() {
+  // remove split visuals
+  flexy.classList.remove("split-mode");
+  faszmano.classList.remove("split-first");
+  polaroid.classList.remove("split-first");
+  faszmano.classList.remove("split-second");
+  polaroid.classList.remove("split-second");
+
   stood = false;
   mizu.innerHTML = "";
 
-  clear();
+  clear(); // also resets split flags & points
 
-  me_points  = 0;
+  // just to be extra explicit:
+  isSplit = false;
+  activeHand = 0;
+  bakelit.onclick = null;
+  bakelit.classList.remove("can-split");   // vinyl shown as broken by default
+
+  me_points = 0;
   opp_points = 0;
 
   // you: first card
-  let c = draw();
-  setCard(card_one_me, c);
-  me_points += valuate(c);
+  let me1 = draw();
+  setCard(card_one_me, me1);
+  me_points += valuate(me1);
 
   // opp: first card
-  c = draw();
-  hidden = c;
+  opp1 = draw();
+  hidden = opp1;
   setCard(card_one_opp, "assets/cards/card-back.svg");
-  opp_points += valuate(c);
+  opp_points += valuate(opp1);
 
   // you: second card
-  c = draw();
-  setCard(card_two_me, c);
-  me_points += valuate(c);
+  me2 = draw(); // TESTING: always a pair so you can spam split
+  // real game later: me2 = draw();
+  setCard(card_two_me, me2);
+  me_points += valuate(me2);
 
   // opp: second card
-  c = draw();
-  setCard(card_two_opp, c);
-  opp_points += valuate(c);
+  opp2 = draw();
+  setCard(card_two_opp, opp2);
+  opp_points += valuate(opp2);
 
-  my_pointer.innerHTML  = me_points;
+  my_pointer.innerHTML = me_points;
   opp_pointer.innerHTML = opp_points;
 
   checkStatus();
+
+  // after you dealt me1 and me2 in firstdeal()
+  if (type(me1) === type(me2)) {
+    splitsetup(me1, me2);
+  } else {
+    bakelit.onclick = null;
+  }
 }
 
 function checkStatus() {
-  if (opp_points === 21) {
-    mizu.innerHTML = "szomorkás";
-    setTimeout(() => {
-      clear();
-      firstdeal();
-    }, 2000);
-  }
-  else if (me_points === 21) {
-    mizu.innerHTML = "fekete jakab";
-    setTimeout(() => {
-      clear();
-      firstdeal();
-    }, 2000);
-  }
-  else if (me_points > 21) {
-    mizu.innerHTML = "a manóba";
-    setTimeout(() => {
-      clear();
-      firstdeal();
-    }, 2000);
-  }
-  else if (opp_points > 21) {
-    mizu.innerHTML = "mondhatni remek";
-    setTimeout(() => {
-      clear();
-      firstdeal();
-    }, 2000);
-  }
-  // from here on, only care once you've stood and opp is done drawing
-  else if (stood && opp_points === me_points) {
-    mizu.innerHTML = "nem lehet eldönteni :(";
-    setTimeout(() => {
-      clear();
-      firstdeal();
-    }, 2000);
-  }
-  else if (stood && opp_points >= 16 && opp_points < me_points) {
-    mizu.innerHTML = "háh";
-    setTimeout(() => {
-      clear();
-      firstdeal();
-    }, 2000);
-  }
-  else if (stood && opp_points >= 16 && opp_points > me_points) {
-    mizu.innerHTML = "hát ez most így alakult";
-    setTimeout(() => {
-      clear();
-      firstdeal();
-    }, 2000);
-  }
-}
-
-function clear() {
-  // move opponent cards to used pile
-  oppCards.forEach(card => {
-    if (hasCard(card)) {
-      pushToUsed(card.getAttribute("src"));
-      clearCard(card);
+  // in split mode, normal status is handled elsewhere
+  if (!isSplit) {
+    if (opp_points === 21) {
+      mizu.innerHTML = "szomorkás";
+      setTimeout(() => {
+        clear();
+        firstdeal();
+      }, 2000);
+    } else if (me_points === 21) {
+      mizu.innerHTML = "fekete jakab";
+      setTimeout(() => {
+        clear();
+        firstdeal();
+      }, 1500);
+    } else if (me_points > 21) {
+      mizu.innerHTML = "a manóba";
+      setTimeout(() => {
+        clear();
+        firstdeal();
+      }, 1500);
+    } else if (opp_points > 21) {
+      mizu.innerHTML = "mondhatni remek";
+      setTimeout(() => {
+        clear();
+        firstdeal();
+      }, 1500);
     }
-  });
-  // move my cards to used pile
-  myCards.forEach(card => {
-    if (hasCard(card)) {
-      pushToUsed(card.getAttribute("src"));
-      clearCard(card);
+    // from here on, only care once you've stood and opp is done drawing
+    else if (stood && opp_points === me_points) {
+      mizu.innerHTML = "nem lehet eldönteni :(";
+      setTimeout(() => {
+        clear();
+        firstdeal();
+      }, 1500);
+    } else if (stood && opp_points >= 16 && opp_points < me_points) {
+      mizu.innerHTML = "háh";
+      setTimeout(() => {
+        clear();
+        firstdeal();
+      }, 1500);
+    } else if (stood && opp_points >= 16 && opp_points > me_points) {
+      mizu.innerHTML = "hát ez most így alakult";
+      setTimeout(() => {
+        clear();
+        firstdeal();
+      }, 1500);
     }
-  });
-  me_points  = 0;
-  opp_points = 0;
-  my_pointer.innerHTML  = me_points;
-  opp_pointer.innerHTML = opp_points;
-  stood = false;
-  mizu.innerHTML = "";
+  }
 }
 
-// you hit
-function hitme() {
-  if (stood || me_points >= 21) return;
-  const nextMySlot = myCards.find(c => !hasCard(c));
-  if (!nextMySlot) return;                              //checks if there is a next slot (5 available now)
-  const newCard = draw();
-  setCard(nextMySlot, newCard);
-  me_points += valuate(newCard);
-  my_pointer.innerHTML = me_points;
-  checkStatus();
-}
 
-// draw once, or (if loop=true) draw until opp_points >= 16 or no slot left but only second option is what ewe need actually (check polaroid button)
+// draw once, or (if loop=true) draw until opp_points >= 16 or no slot left
 function drawopponent(loop = false) {
   do {
     if (opp_points >= 16) break;
@@ -173,19 +180,20 @@ function drawopponent(loop = false) {
 }
 
 function valuate(cardsrc) {
-  if (!cardsrc) { throw new Error("valuate(): no card value for src = " + cardsrc); }
+  if (!cardsrc) {
+    throw new Error("valuate(): no card value for src = " + cardsrc);
+  }
   if (
     cardsrc.includes("queen") ||
-    cardsrc.includes("jack")  ||
-    cardsrc.includes("king")  ||
-    cardsrc.includes("-10")
+    cardsrc.includes("jack") ||
+    cardsrc.includes("king")
   ) {
     return 10;
   }
   if (cardsrc.includes("ace")) {
     return 11;
   }
-  for (let i = 2; i <= 9; i++) {
+  for (let i = 2; i <= 10; i++) {
     if (cardsrc.includes(`-${i}.`)) {
       return i;
     }
@@ -193,3 +201,18 @@ function valuate(cardsrc) {
   throw new Error("valuate(): unknown card value for src = " + cardsrc);
 }
 
+function type(cardsrc) {
+  if (!cardsrc) {
+    throw new Error("type(): no card value for src = " + cardsrc);
+  }
+  if (cardsrc.includes("queen")) return "queen";
+  else if (cardsrc.includes("jack")) return "jack";
+  else if (cardsrc.includes("king")) return "king";
+  else if (cardsrc.includes("ace")) return "ace";
+  for (let i = 2; i <= 10; i++) {
+    if (cardsrc.includes(`-${i}.`)) {
+      return String(i);
+    }
+  }
+  throw new Error("type(): unknown card value for src = " + cardsrc);
+}

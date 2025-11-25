@@ -71,8 +71,15 @@ const opp_pointer = document.getElementById("opp_value");
 const faszmano = document.getElementById("hitme");
 const polaroid = document.getElementById("stand");
 const bakelit = document.getElementById("split");
+bakelit.style.backgroundImage = "";
+
+const flexy = document.querySelector(".flexy");
+
 
 let stood = false;
+
+let splittedcounterone = 0;
+let splittedcountertwo = 0;
 
 const mizu = document.getElementById("mizu");
 
@@ -81,12 +88,18 @@ const card_two_me   = document.getElementById("card_two_me");
 const card_three_me = document.getElementById("card_three_me");
 const card_four_me  = document.getElementById("card_four_me");
 const card_five_me  = document.getElementById("card_five_me");
+const card_six_me  = document.getElementById("card_six_me");
+const card_seven_me  = document.getElementById("card_seven_me");
+const card_eight_me  = document.getElementById("card_eight_me");
 const myCards = [
   card_one_me,
   card_two_me,
   card_three_me,
   card_four_me,
-  card_five_me
+  card_five_me,
+  card_six_me,
+  card_seven_me,
+  card_eight_me
 ];
 
 const card_one_opp   = document.getElementById("card_one_opp");
@@ -113,6 +126,14 @@ const new_three = document.getElementById("new_three");
 const new_four  = document.getElementById("new_four");
 
 let hidden;
+
+let splitted = false;
+let activeHand = 0;  // 0 = left hand, 1 = right hand
+
+const splitHands = [
+  { slots: [card_one_me, card_two_me, card_three_me, card_four_me], score: 0, stood: false },
+  { slots: [card_five_me, card_six_me, card_seven_me, card_eight_me], score: 0, stood: false }
+];
 
 // ---------------- used pile state ----------------
 

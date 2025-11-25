@@ -41,6 +41,10 @@ body {
     box-shadow: 0px 12px 35px rgba(0, 0, 0, 0.45);
     border-radius: 8px;
 }
+.cards[src=""],
+.cards:not([src]) {
+    display: none;
+}
 
 .container {
     position: absolute;
@@ -94,7 +98,7 @@ body {
     bottom: 10vh;
     right: 5vw;
     width: 70vw;
-    max-width: 1400px;
+    max-width: 1500px;
 }
 .pokertable {
     width: 100%;
@@ -116,6 +120,61 @@ body {
     justify-content: center;
     gap: 2vw;                 /* distance between the 4 cards */
     transform: translate(-3vw, -2vh);   /* move cards left */
+}
+/* SPLIT */
+/* all my cards become absolute, free from flex slots */
+.flexy.split-mode .cards {
+    position: absolute;
+}
+/* ===== LEFT HAND (4 cards) ===== */
+.flexy.split-mode #card_one_me {
+    top: 55%;
+    left: 30%;
+    transform: translate(-50%, -50%) rotate(-6deg);
+    z-index: 1;
+}
+.flexy.split-mode #card_two_me {
+    top: 57%;
+    left: 33%;
+    transform: translate(-48%, -50%) rotate(-1deg);
+    z-index: 2;
+}
+.flexy.split-mode #card_three_me {
+    top: 60%;
+    left: 36%;
+    transform: translate(-46%, -50%) rotate(3deg);
+    z-index: 3;
+}
+.flexy.split-mode #card_four_me {
+    top: 63%;
+    left: 40%;
+    transform: translate(-54%, -50%) rotate(-2deg);
+    z-index: 4;
+}
+/* ===== RIGHT HAND (4 cards) ===== */
+.flexy.split-mode #card_five_me {
+    top: 57%;
+    left: 63%;
+    transform: translate(-52%, -50%) rotate(-1deg);
+    z-index: 1;
+}
+.flexy.split-mode #card_six_me {
+    top: 60%;
+    left: 66%;
+    transform: translate(-50%, -47%) rotate(-6deg);
+    z-index: 2;
+}
+.flexy.split-mode #card_seven_me {
+    top: 63%;
+    left: 69%;
+    transform: translate(-48%, -50%) rotate(4deg);
+    z-index: 3;
+}
+.flexy.split-mode #card_eight_me {
+    top: 66%;
+    left: 70%;
+    transform: translate(-51%, -50%) rotate(-3deg);
+    z-index: 4;
 }
 
 
@@ -254,8 +313,14 @@ img[src=""] {
     right: 32vw;
 
     filter: drop-shadow(0 0 15px #000000);
-    transform: rotate(-17deg);
+    transform: rotate(11deg);
     z-index: 9999;
+}
+#hitme.split-first {
+    transform: rotate(50deg);
+}
+#hitme.split-second {
+    transform: rotate(-10deg);
 }
 
 #stand {
@@ -277,9 +342,16 @@ img[src=""] {
     right: 25vw;
 
     filter: drop-shadow(0 0 15px #000000);
-    transform: rotate(13deg);
+    transform: rotate(-5deg);
     z-index: 9999;
 }
+#stand.split-first {
+    transform: rotate(53deg);
+}
+#stand.split-second {
+    transform: rotate(20deg);
+}
+
 #split {
     background: transparent;
     border: none;
@@ -302,7 +374,9 @@ img[src=""] {
     transform: rotate(20deg);
     z-index: 9999;
 }
-
+#split.can-split {
+    background-image: url("../assets/vinyl-broken.png");
+}
 
 
 @media (max-width: 1550px) {
