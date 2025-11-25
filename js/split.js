@@ -121,17 +121,17 @@ function splittedoutcomes() {
   let msg = "";
 
   if (left === "win" && right === "win") {
-    msg = "mindkét kéz nyert";
+    msg = "sima liba";
   } else if (left === "lose" && right === "lose") {
-    msg = "mindkét kéz bukta";
+    msg = "teljesen kampó";
   } else if (left === "win" && right === "lose") {
-    msg = "bal kéz nyert, jobb veszített";
+    msg = "bal ott volt, jobb gatya";
   } else if (left === "lose" && right === "win") {
     msg = "bal kéz veszített, jobb nyert";
   } else if (left === "bust" && right === "bust") {
-    msg = "mindkét kéz besokallt";
+    msg = "mindkét kéz bukta";
   } else if (left === "bust" || right === "bust") {
-    msg = "az egyik kéz besokallt";
+    msg = "az egyik kéz nem adta ki";
   } else {
     msg = "valami döntetlen mizéria";
   }
