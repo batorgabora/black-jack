@@ -115,52 +115,50 @@ function firstdeal() {
 
 function checkStatus() {
   // in split mode, normal status is handled elsewhere
-  if (!isSplit) {
-    if (opp_points === 21) {
-      mizu.innerHTML = "szomorkás";
-      setTimeout(() => {
-        clear();
-        firstdeal();
-      }, 2000);
-    } else if (me_points === 21) {
-      mizu.innerHTML = "fekete jakab";
-      setTimeout(() => {
-        clear();
-        firstdeal();
-      }, 1500);
-    } else if (me_points > 21) {
-      mizu.innerHTML = "a manóba";
-      setTimeout(() => {
-        clear();
-        firstdeal();
-      }, 1500);
-    } else if (opp_points > 21) {
-      mizu.innerHTML = "mondhatni remek";
-      setTimeout(() => {
-        clear();
-        firstdeal();
-      }, 1500);
-    }
-    // from here on, only care once you've stood and opp is done drawing
-    else if (stood && opp_points === me_points) {
-      mizu.innerHTML = "nem lehet eldönteni :(";
-      setTimeout(() => {
-        clear();
-        firstdeal();
-      }, 1500);
-    } else if (stood && opp_points >= 16 && opp_points < me_points) {
-      mizu.innerHTML = "háh";
-      setTimeout(() => {
-        clear();
-        firstdeal();
-      }, 1500);
-    } else if (stood && opp_points >= 16 && opp_points > me_points) {
-      mizu.innerHTML = "hát ez most így alakult";
-      setTimeout(() => {
-        clear();
-        firstdeal();
-      }, 1500);
-    }
+  if (opp_points === 21) {
+    mizu.innerHTML = "kapásból gatya";
+    setTimeout(() => {
+      clear();
+      firstdeal();
+    }, 2000);
+  } else if (me_points === 21) {
+    mizu.innerHTML = "fekete jakab";
+    setTimeout(() => {
+      clear();
+      firstdeal();
+    }, 1500);
+  } else if (me_points > 21) {
+    mizu.innerHTML = "a manóba";
+    setTimeout(() => {
+      clear();
+      firstdeal();
+    }, 1500);
+  } else if (opp_points > 21) {
+    mizu.innerHTML = "addig járt a korsó...";
+    setTimeout(() => {
+      clear();
+      firstdeal();
+    }, 1500);
+  }
+  // from here on, only care once you've stood and opp is done drawing
+  else if (stood && opp_points === me_points) {
+    mizu.innerHTML = "hát ez ilyen döntetlen";
+    setTimeout(() => {
+      clear();
+      firstdeal();
+    }, 1500);
+  } else if (stood && opp_points >= 16 && opp_points < me_points) {
+    mizu.innerHTML = "bölcs";
+    setTimeout(() => {
+      clear();
+      firstdeal();
+    }, 1500);
+  } else if (stood && opp_points >= 16 && opp_points > me_points) {
+    mizu.innerHTML = "nem adta ki banyek";
+    setTimeout(() => {
+      clear();
+      firstdeal();
+    }, 1500);
   }
 }
 
