@@ -15,26 +15,27 @@ function startSplit(me1, me2) {
   splitHands.forEach(h => {
     h.score = 0;
     h.stood = false;
+    h.aces = 0;
   });
 
   // LEFT HAND: keep first card on card_one_me
-  splitHands[0].score = valuate(me1);
+  addCardToSplitHand(splitHands[0], me1);
   // LEFT HAND slots: [1,2,3,4] (set in declaration.js)
 
   // RIGHT HAND: move the second card to card_five_me (start of right hand 5–8)
   clearCard(card_two_me);
   setCard(card_five_me, me2);
-  splitHands[1].score = valuate(me2);
+  addCardToSplitHand(splitHands[1], me2);
   // RIGHT HAND slots: [5,6,7,8] (set in declaration.js)
 
   // draw one extra card for each hand
   const extra1 = draw();
   setCard(card_two_me, extra1);   // left extra on slot 2
-  splitHands[0].score += valuate(extra1);
+  addCardToSplitHand(splitHands[0], extra1);
 
   const extra2 = draw();
   setCard(card_six_me, extra2);   // right extra on slot 6
-  splitHands[1].score += valuate(extra2);
+  addCardToSplitHand(splitHands[1], extra2);
 
   showsplittedstate();
 
@@ -49,8 +50,9 @@ function startSplit(me1, me2) {
 }
 
 function showsplittedstate() {
-  my_pointer.innerHTML =
-    splitHands[0].score + " split " + splitHands[1].score;
+  const leftDisplay  = formatSplitHand(splitHands[0]);
+  const rightDisplay = formatSplitHand(splitHands[1]);
+  my_pointer.innerHTML = leftDisplay + " | " + rightDisplay;
 }
 
 /* hitme() split branch */
@@ -63,10 +65,32 @@ function hitsplit() {
 
   const newCard = draw();
   setCard(nextSlot, newCard);
-  hand.score += valuate(newCard);
+  addCardToSplitHand(hand, newCard);
 
   showsplittedstate();
   splitstatusforhand();
+}
+
+function addCardToSplitHand(hand, cardsrc) {
+  if (!cardsrc) {
+    throw new Error("addCardToSplitHand(): no card src");
+  }
+
+  if (cardsrc.includes("ace")) {
+    hand.aces = (hand.aces || 0) + 1;
+  }
+
+  hand.score += valuate(cardsrc);
+
+  // downgrade aces if this hand would bust
+  while (hand.score > 21 && hand.aces > 0) {
+    hand.score -= 10;
+    hand.aces--;
+  }
+}
+
+function formatSplitHand(hand) {
+  return formatHand(hand.score, hand.aces || 0);
 }
 
 function splitstatusforhand() {

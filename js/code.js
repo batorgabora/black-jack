@@ -11,6 +11,48 @@ function draw() {
   return card;
 }
 
+// how many aces are currently counted as 11 in each main hand
+let me_aces = 0;
+let opp_aces = 0;
+
+// ---------------- ace-aware helpers ----------------
+
+function addCardToMe(cardsrc) {
+  if (!cardsrc) {
+    throw new Error("addCardToMe(): no card src");
+  }
+
+  if (cardsrc.includes("ace")) {
+    me_aces++;
+  }
+
+  me_points += valuate(cardsrc);
+
+  // downgrade aces from 11 -> 1 if we bust
+  while (me_points > 21 && me_aces > 0) {
+    me_points -= 10;
+    me_aces--;
+  }
+}
+
+function addCardToOpp(cardsrc) {
+  if (!cardsrc) {
+    throw new Error("addCardToOpp(): no card src");
+  }
+
+  if (cardsrc.includes("ace")) {
+    opp_aces++;
+  }
+
+  opp_points += valuate(cardsrc);
+
+  // downgrade aces from 11 -> 1 if dealer busts
+  while (opp_points > 21 && opp_aces > 0) {
+    opp_points -= 10;
+    opp_aces--;
+  }
+}
+
 // ---------------- game start ----------------
 firstdeal();
 // ---------------- game end ----------------
@@ -26,8 +68,8 @@ faszmano.addEventListener("click", function () {
     if (!nextMySlot) return;
     const newCard = draw();
     setCard(nextMySlot, newCard);
-    me_points += valuate(newCard);
-    my_pointer.innerHTML = me_points;
+    addCardToMe(newCard);
+    my_pointer.innerHTML = formatHand(me_points, me_aces);
     checkStatus();
   } 
   else {
@@ -77,31 +119,33 @@ function firstdeal() {
 
   me_points = 0;
   opp_points = 0;
+  me_aces = 0;
+  opp_aces = 0;
 
   // you: first card
   let me1 = draw();
   setCard(card_one_me, me1);
-  me_points += valuate(me1);
+  addCardToMe(me1);
 
   // opp: first card
   opp1 = draw();
   hidden = opp1;
   setCard(card_one_opp, "assets/cards/card-back.svg");
-  opp_points += valuate(opp1);
+  addCardToOpp(opp1);
 
   // you: second card
   me2 = draw(); // TESTING: always a pair so you can spam split
   // real game later: me2 = draw();
   setCard(card_two_me, me2);
-  me_points += valuate(me2);
+  addCardToMe(me2);
 
   // opp: second card
   opp2 = draw();
   setCard(card_two_opp, opp2);
-  opp_points += valuate(opp2);
+  addCardToOpp(opp2);
 
-  my_pointer.innerHTML = me_points;
-  opp_pointer.innerHTML = opp_points;
+  my_pointer.innerHTML = formatHand(me_points, me_aces);
+  opp_pointer.innerHTML = formatHand(opp_points, opp_aces);
 
   checkStatus();
 
@@ -171,10 +215,24 @@ function drawopponent(loop = false) {
     if (!nextOppSlot) break;
     const newCard = draw();
     setCard(nextOppSlot, newCard);
-    opp_points += valuate(newCard);
+    addCardToOpp(newCard);
   } while (loop && opp_points < 16);
 
-  opp_pointer.innerHTML = opp_points;
+  opp_pointer.innerHTML = formatHand(opp_points, opp_aces);
+}
+
+// ---------------- display formatter for soft/hard hands ----------------
+
+function formatHand(points, aces) {
+  const hard = points - 10 * aces;  // all aces treated as 1
+
+  // If we still have aces counted as 11, totals differ, and it's not bust,
+  // show both, e.g. "7 / 17"
+  if (aces > 0 && points !== hard && points <= 21) {
+    return hard + " / " + points;
+  } else {
+    return String(points);
+  }
 }
 
 function valuate(cardsrc) {

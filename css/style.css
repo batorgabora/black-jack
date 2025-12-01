@@ -41,7 +41,7 @@ body {
     height: var(--card-size);
     width: auto;
     box-shadow: 0px 12px 35px rgba(0, 0, 0, 0.45);
-    border-radius: 8px;
+    border-radius: 5px;
 }
 .cards[src=""],
 .cards:not([src]) {

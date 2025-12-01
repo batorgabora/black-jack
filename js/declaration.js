@@ -130,9 +130,9 @@ let hidden;
 let splitted = false;
 let activeHand = 0;  // 0 = left hand, 1 = right hand
 
-const splitHands = [
-  { slots: [card_one_me, card_two_me, card_three_me, card_four_me], score: 0, stood: false },
-  { slots: [card_five_me, card_six_me, card_seven_me, card_eight_me], score: 0, stood: false }
+splitHands = [
+  { score: 0, stood: false, aces: 0, slots: [card_one_me, card_two_me, card_three_me, card_four_me] },
+  { score: 0, stood: false, aces: 0, slots: [card_five_me, card_six_me, card_seven_me, card_eight_me] }
 ];
 
 // ---------------- used pile state ----------------
