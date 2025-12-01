@@ -508,6 +508,12 @@ img[src=""] {
         transform: rotate(-15deg);
         z-index: 9999;
     }
+    #hitme.split-first {
+        transform: rotate(10deg);
+    }
+    #hitme.split-second {
+        transform: rotate(55deg);
+    }
     #stand {
         top: auto;
         bottom: 14vh;
@@ -517,6 +523,12 @@ img[src=""] {
         transform: rotate(20deg);
         z-index: 9999;
     }
+    #stand.split-first {
+        transform: rotate(-55deg);
+    }
+    #stand.split-second {
+        transform: rotate(-35deg);
+    }
     #split {
         top: auto;
         bottom: -14vh;
@@ -525,6 +537,7 @@ img[src=""] {
         transform: translateX(-50%) rotate(0deg);
         z-index: 9999;
     }
+  
 
     #rules {
         margin: 0;
