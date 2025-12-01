@@ -204,7 +204,6 @@ function checkStatus() {
 
 // draw once, or (if loop=true) draw until opp_points >= 16 or no slot left
 function drawopponent(loop = false) {
-  setTimeout(() => {
   do {
     if (opp_points >= 16) break;
     const nextOppSlot = oppCards.find(c => !hasCard(c));
@@ -213,7 +212,6 @@ function drawopponent(loop = false) {
     setCard(nextOppSlot, newCard);
     addCardToOpp(newCard);
   } while (loop && opp_points < 16);
-}, 400);
 
   opp_pointer.innerHTML = formatHand(opp_points, opp_aces);
 }
