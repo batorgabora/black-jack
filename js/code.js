@@ -21,13 +21,10 @@ function addCardToMe(cardsrc) {
   if (!cardsrc) {
     throw new Error("addCardToMe(): no card src");
   }
-
   if (cardsrc.includes("ace")) {
     me_aces++;
   }
-
   me_points += valuate(cardsrc);
-
   // downgrade aces from 11 -> 1 if we bust
   while (me_points > 21 && me_aces > 0) {
     me_points -= 10;
@@ -39,13 +36,10 @@ function addCardToOpp(cardsrc) {
   if (!cardsrc) {
     throw new Error("addCardToOpp(): no card src");
   }
-
   if (cardsrc.includes("ace")) {
     opp_aces++;
   }
-
   opp_points += valuate(cardsrc);
-
   // downgrade aces from 11 -> 1 if dealer busts
   while (opp_points > 21 && opp_aces > 0) {
     opp_points -= 10;
@@ -64,10 +58,12 @@ faszmano.addEventListener("click", function () {
   if (!isSplit) {
     // ---- non-split logic ----
     if (stood || me_points >= 21) return;
+
     const nextMySlot = myCards.find(c => !hasCard(c));
     if (!nextMySlot) return;
     const newCard = draw();
     setCard(nextMySlot, newCard);
+
     addCardToMe(newCard);
     my_pointer.innerHTML = formatHand(me_points, me_aces);
     checkStatus();
@@ -145,7 +141,7 @@ function firstdeal() {
   addCardToOpp(opp2);
 
   my_pointer.innerHTML = formatHand(me_points, me_aces);
-  opp_pointer.innerHTML = formatHand(opp_points, opp_aces);
+  //opp_pointer.innerHTML = formatHand(opp_points, opp_aces);
 
   checkStatus();
 
@@ -218,7 +214,7 @@ function drawopponent(loop = false) {
     addCardToOpp(newCard);
   } while (loop && opp_points < 16);
 
-  opp_pointer.innerHTML = formatHand(opp_points, opp_aces);
+  //opp_pointer.innerHTML = formatHand(opp_points, opp_aces);
 }
 
 // ---------------- display formatter for soft/hard hands ----------------
