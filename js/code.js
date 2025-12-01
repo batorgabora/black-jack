@@ -58,12 +58,11 @@ faszmano.addEventListener("click", function () {
   if (!isSplit) {
     // ---- non-split logic ----
     if (stood || me_points >= 21) return;
-
+    
     const nextMySlot = myCards.find(c => !hasCard(c));
     if (!nextMySlot) return;
     const newCard = draw();
     setCard(nextMySlot, newCard);
-
     addCardToMe(newCard);
     my_pointer.innerHTML = formatHand(me_points, me_aces);
     checkStatus();
@@ -141,7 +140,7 @@ function firstdeal() {
   addCardToOpp(opp2);
 
   my_pointer.innerHTML = formatHand(me_points, me_aces);
-  //opp_pointer.innerHTML = formatHand(opp_points, opp_aces);
+  opp_pointer.innerHTML = formatHand(opp_points, opp_aces);
 
   checkStatus();
 
@@ -214,7 +213,7 @@ function drawopponent(loop = false) {
     addCardToOpp(newCard);
   } while (loop && opp_points < 16);
 
-  //opp_pointer.innerHTML = formatHand(opp_points, opp_aces);
+  opp_pointer.innerHTML = formatHand(opp_points, opp_aces);
 }
 
 // ---------------- display formatter for soft/hard hands ----------------

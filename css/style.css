@@ -28,6 +28,15 @@ body {
     margin: 0;
     text-align: center;
 }
+#values{
+    position: absolute;
+    top: 20vh;          /* vertical distance from top of page */
+    right: 12vw;       /* distance from right side */
+    z-index: 9999;        /* ALWAYS on top */
+    font-weight: bold;
+    margin: 0;
+    text-align: center;
+}
 
 :root {
     --card-size: 10vmax;   /* default desktop size */
@@ -538,7 +547,6 @@ img[src=""] {
         z-index: 9999;
     }
   
-
     #rules {
         margin: 0;
         justify-content: flex-start;    /* start at top, easier to scroll */
@@ -560,6 +568,11 @@ img[src=""] {
     }
     .pictext img {
         height: clamp(40px, 10vh, 90px);
+    }
+
+    #values{
+        top: 2vh;          /* vertical distance from top of page */
+        right: 4vw;       /* distance from right side */
     }
 }
 
