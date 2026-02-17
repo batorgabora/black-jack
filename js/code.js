@@ -79,10 +79,7 @@ polaroid.addEventListener("click", function () {
     // ---- normal stand logic ----
     stood = true;
     setCard(card_one_opp, hidden);
-    setTimeout(() => {
-      drawopponent(true);
-      checkStatus();
-    }, 2000);
+    setTimeout(drawopponent, 1000);   // wait a sec before dealer starts drawing
   } else {
     // split mode: only stand current hand
     const hand = splitHands[activeHand];
@@ -142,6 +139,15 @@ function firstdeal() {
   my_pointer.innerHTML = formatHand(me_points, me_aces);
   opp_pointer.innerHTML = formatHand(opp_points, opp_aces);
 
+
+  if(opp_points === 21) {
+    setCard(card_one_opp, opp1); // reveal hole card immediately if opp has blackjack
+    mizu.innerHTML = "fekete jakab";
+  }
+  else if(me_points === 21) {
+    mizu.innerHTML = "fekete jakab";
+  }
+  
   checkStatus();
 
   // after you dealt me1 and me2 in firstdeal()
@@ -204,17 +210,28 @@ function checkStatus() {
 
 // draw once, or (if loop=true) draw until opp_points >= 16 or no slot left
 function drawopponent() {
-  do {
-    if (opp_points >= 16) break;
-    const nextOppSlot = oppCards.find(c => !hasCard(c));
-    if (!nextOppSlot) break;
+  // ---- STOP CONDITIONS ----
+  if (opp_points >= 16) {
+    opp_pointer.innerHTML = formatHand(opp_points, opp_aces);
+    checkStatus();
+    return;
+  }
 
-    const newCard = draw();
-    setCard(nextOppSlot, newCard);
-    addCardToOpp(newCard);
-  } while (opp_points < 16);
+  const nextOppSlot = oppCards.find(c => !hasCard(c));
+  if (!nextOppSlot) {
+    opp_pointer.innerHTML = formatHand(opp_points, opp_aces);
+    checkStatus();
+    return;
+  }
 
+  // ---- DRAW ONE CARD ----
+  const newCard = draw();
+  setCard(nextOppSlot, newCard);
+  addCardToOpp(newCard);
   opp_pointer.innerHTML = formatHand(opp_points, opp_aces);
+
+  // ---- WAIT, THEN CONTINUE ----
+  setTimeout(drawopponent, 700);   // dealer speed
 }
 
 // ---------------- display formatter for soft/hard hands ----------------
