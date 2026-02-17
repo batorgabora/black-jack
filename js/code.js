@@ -129,8 +129,8 @@ function firstdeal() {
   addCardToOpp(opp1);
 
   // you: second card
-  me2 = me1; // TESTING: always a pair so you can spam split
-  //me2 = draw();
+  //me2 = me1; // TESTING: always a pair so you can spam split
+  me2 = draw();
   setCard(card_two_me, me2);
   addCardToMe(me2);
 
