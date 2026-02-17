@@ -20,13 +20,13 @@ function startSplit(me1, me2) {
 
   // LEFT HAND: keep first card on card_one_me
   addCardToSplitHand(splitHands[0], me1);
-  // LEFT HAND slots: [1,2,3,4] (set in declaration.js)
+  // LEFT HAND slots: [1,2,3,4,5] (set in declaration.js)
 
-  // RIGHT HAND: move the second card to card_five_me (start of right hand 5–8)
+  // RIGHT HAND: move the second card to card_six_me (start of right hand 6–10)
   clearCard(card_two_me);
-  setCard(card_five_me, me2);
+  setCard(card_six_me, me2);
   addCardToSplitHand(splitHands[1], me2);
-  // RIGHT HAND slots: [5,6,7,8] (set in declaration.js)
+  // RIGHT HAND slots: [6,7,8,9,10] (set in declaration.js)
 
   // draw one extra card for each hand
   const extra1 = draw();
@@ -34,7 +34,7 @@ function startSplit(me1, me2) {
   addCardToSplitHand(splitHands[0], extra1);
 
   const extra2 = draw();
-  setCard(card_six_me, extra2);   // right extra on slot 6
+  setCard(card_seven_me, extra2);   // right extra on slot 7
   addCardToSplitHand(splitHands[1], extra2);
 
   showsplittedstate();
@@ -123,7 +123,7 @@ function switchsplittedhands() {
   setTimeout(() => {
     drawopponent(true);
     splittedoutcomes();
-  }, 1500);
+  }, 2000);
 }
 
 function handresult(score) {
@@ -151,13 +151,13 @@ function splittedoutcomes() {
   } else if (left === "win" && right === "lose") {
     msg = "bal ott volt, jobb gatya";
   } else if (left === "lose" && right === "win") {
-    msg = "bal kéz veszített, jobb nyert";
+    msg = "bal gatya, jobb ott volt";
   } else if (left === "bust" && right === "bust") {
-    msg = "mindkét kéz bukta";
+    msg = "mindkét kéz túlment";
   } else if (left === "bust" || right === "bust") {
-    msg = "az egyik kéz nem adta ki";
+    msg = "az egyik kéz túlment";
   } else {
-    msg = "valami döntetlen mizéria";
+    msg = "valami mizéria";
   }
 
   mizu.innerHTML = msg;

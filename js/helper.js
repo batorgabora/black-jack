@@ -63,14 +63,15 @@ function syncUsedImages() {                 //does it for each visible element i
   syncUsedSlot(used_two,   usedPile[1]);
   syncUsedSlot(used_three, usedPile[2]);
   syncUsedSlot(used_four,  usedPile[3]);
+  syncUsedSlot(used_five,  usedPile[4]);
 }
 
 // used pile: newest card on top (used_one)
 function pushToUsed(src) {
   if (!src) return;
   usedPile.unshift(src);
-  if (usedPile.length > 4) {
-    usedPile.length = 4;
+  if (usedPile.length > 5) {
+    usedPile.length = 5;
   }
   syncUsedImages();
 }

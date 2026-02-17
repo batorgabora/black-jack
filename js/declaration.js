@@ -91,6 +91,9 @@ const card_five_me  = document.getElementById("card_five_me");
 const card_six_me  = document.getElementById("card_six_me");
 const card_seven_me  = document.getElementById("card_seven_me");
 const card_eight_me  = document.getElementById("card_eight_me");
+const card_nine_me  = document.getElementById("card_nine_me");
+const card_ten_me  = document.getElementById("card_ten_me");
+
 const myCards = [
   card_one_me,
   card_two_me,
@@ -99,7 +102,9 @@ const myCards = [
   card_five_me,
   card_six_me,
   card_seven_me,
-  card_eight_me
+  card_eight_me,
+  card_nine_me,
+  card_ten_me
 ];
 
 const card_one_opp   = document.getElementById("card_one_opp");
@@ -107,18 +112,29 @@ const card_two_opp   = document.getElementById("card_two_opp");
 const card_three_opp = document.getElementById("card_three_opp");
 const card_four_opp  = document.getElementById("card_four_opp");
 const card_five_opp  = document.getElementById("card_five_opp");
+const card_six_opp  = document.getElementById("card_six_opp");
+const card_seven_opp  = document.getElementById("card_seven_opp");
+const card_eight_opp  = document.getElementById("card_eight_opp");
+const card_nine_opp  = document.getElementById("card_nine_opp");
+const card_ten_opp  = document.getElementById("card_ten_opp");
 const oppCards = [
   card_one_opp,
   card_two_opp,
   card_three_opp,
   card_four_opp,
-  card_five_opp
+  card_five_opp,
+  card_six_opp,
+  card_seven_opp,
+  card_eight_opp,
+  card_nine_opp,
+  card_ten_opp
 ];
 
 const used_one   = document.getElementById("used_one");
 const used_two   = document.getElementById("used_two");
 const used_three = document.getElementById("used_three");
 const used_four  = document.getElementById("used_four");
+const used_five  = document.getElementById("used_five");
 
 const new_one   = document.getElementById("new_one");
 const new_two   = document.getElementById("new_two");
@@ -131,8 +147,8 @@ let splitted = false;
 let activeHand = 0;  // 0 = left hand, 1 = right hand
 
 splitHands = [
-  { score: 0, stood: false, aces: 0, slots: [card_one_me, card_two_me, card_three_me, card_four_me] },
-  { score: 0, stood: false, aces: 0, slots: [card_five_me, card_six_me, card_seven_me, card_eight_me] }
+  { score: 0, stood: false, aces: 0, slots: [card_one_me, card_two_me, card_three_me, card_four_me, card_five_me] },
+  { score: 0, stood: false, aces: 0, slots: [card_six_me, card_seven_me, card_eight_me, card_nine_me, card_ten_me] }
 ];
 
 // ---------------- used pile state ----------------

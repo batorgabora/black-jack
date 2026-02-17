@@ -129,8 +129,8 @@ function firstdeal() {
   addCardToOpp(opp1);
 
   // you: second card
-  me2 = draw(); // TESTING: always a pair so you can spam split
-  // real game later: me2 = draw();
+  me2 = me1; // TESTING: always a pair so you can spam split
+  //me2 = draw();
   setCard(card_two_me, me2);
   addCardToMe(me2);
 
@@ -146,7 +146,7 @@ function firstdeal() {
 
   // after you dealt me1 and me2 in firstdeal()
   if (type(me1) === type(me2)) {
-    splitsetup(me1, me2);
+    splitsetup(me1, me2);             //split.js
   } else {
     bakelit.onclick = null;
   }
@@ -155,13 +155,13 @@ function firstdeal() {
 function checkStatus() {
   // in split mode, normal status is handled elsewhere
   if (opp_points === 21) {
-    mizu.innerHTML = "kapásból gatya";
+    mizu.innerHTML = "gatya";
     setTimeout(() => {
       clear();
       firstdeal();
     }, 2000);
   } else if (me_points === 21) {
-    mizu.innerHTML = "fekete jakab";
+    mizu.innerHTML = "az se rossz";
     setTimeout(() => {
       clear();
       firstdeal();
@@ -203,15 +203,16 @@ function checkStatus() {
 
 
 // draw once, or (if loop=true) draw until opp_points >= 16 or no slot left
-function drawopponent(loop = false) {
+function drawopponent() {
   do {
     if (opp_points >= 16) break;
     const nextOppSlot = oppCards.find(c => !hasCard(c));
     if (!nextOppSlot) break;
+
     const newCard = draw();
     setCard(nextOppSlot, newCard);
     addCardToOpp(newCard);
-  } while (loop && opp_points < 16);
+  } while (opp_points < 16);
 
   opp_pointer.innerHTML = formatHand(opp_points, opp_aces);
 }

@@ -141,53 +141,65 @@ body {
 }
 /* ===== LEFT HAND (4 cards) ===== */
 .flexy.split-mode #card_one_me {
-    top: 55%;
-    left: 30%;
+    top: 53%;
+    left: 25%;
     transform: translate(-50%, -50%) rotate(-6deg);
     z-index: 1;
 }
 .flexy.split-mode #card_two_me {
-    top: 57%;
-    left: 33%;
+    top: 56%;
+    left: 28%;
     transform: translate(-48%, -50%) rotate(-1deg);
     z-index: 2;
 }
 .flexy.split-mode #card_three_me {
-    top: 60%;
-    left: 36%;
+    top: 59%;
+    left: 31%;
     transform: translate(-46%, -50%) rotate(3deg);
     z-index: 3;
 }
 .flexy.split-mode #card_four_me {
-    top: 63%;
-    left: 40%;
+    top: 61%;
+    left: 33%;
     transform: translate(-54%, -50%) rotate(-2deg);
     z-index: 4;
 }
-/* ===== RIGHT HAND (4 cards) ===== */
 .flexy.split-mode #card_five_me {
-    top: 57%;
-    left: 63%;
-    transform: translate(-52%, -50%) rotate(-1deg);
+    top: 63%;
+    left: 38%;
+    transform: translate(-52%, -46%) rotate(-1deg);
+    z-index: 5;
+}
+/* ===== RIGHT HAND (4 cards) ===== */
+.flexy.split-mode #card_six_me {
+    top: 50%;
+    left: 55%;
+    transform: translate(-50%, -47%) rotate(-3deg);
     z-index: 1;
 }
-.flexy.split-mode #card_six_me {
-    top: 60%;
-    left: 66%;
-    transform: translate(-50%, -47%) rotate(-6deg);
+.flexy.split-mode #card_seven_me {
+    top: 53%;
+    left: 58%;
+    transform: translate(-48%, -50%) rotate(-1deg);
     z-index: 2;
 }
-.flexy.split-mode #card_seven_me {
-    top: 63%;
-    left: 69%;
-    transform: translate(-48%, -50%) rotate(4deg);
+.flexy.split-mode #card_eight_me {
+    top: 56%;
+    left: 61%;
+    transform: translate(-51%, -50%) rotate(1deg);
     z-index: 3;
 }
-.flexy.split-mode #card_eight_me {
-    top: 66%;
-    left: 70%;
-    transform: translate(-51%, -50%) rotate(-3deg);
+.flexy.split-mode #card_nine_me {
+    top: 59%;
+    left: 63%;
+    transform: translate(-50%, -50%) rotate(4deg);
     z-index: 4;
+}
+.flexy.split-mode #card_ten_me {
+    top: 62%;
+    left: 66%;
+    transform: translate(-51%, -50%) rotate(7deg);
+    z-index: 5;
 }
 
 
@@ -263,16 +275,19 @@ img[src=""] {
 }
 
 #used_one{
-    transform: translate(0.9vw, 0.9vh) rotate(7deg);
+    transform: translate(1.6vw, 2vh) rotate(10deg);
 }
 #used_two{
-    transform: translate(0.7vw, 0.8vh) rotate(-2deg);
+    transform: translate(0.2vw, 1.3vh) rotate(-3deg);
 }
 #used_three{
-    transform: translate(-1.5vw, 0.6vh) rotate(-7deg);
+    transform: translate(0.4vw, -1.4vh) rotate(9deg);
 }
 #used_four{
-    transform: translate(1vw, -1.2vh) rotate(4deg);
+    transform: translate(0.0vw, -3.4vh) rotate(-4deg);
+}
+#used_five{
+    transform: translate(2.4vw, -1vh) rotate(-15deg);
 }
 
 #card_one_me{
