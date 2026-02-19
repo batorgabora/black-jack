@@ -79,7 +79,7 @@ polaroid.addEventListener("click", function () {
     // ---- normal stand logic ----
     stood = true;
     setCard(card_one_opp, hidden);
-    setTimeout(drawopponent, 1200);   // wait a sec before dealer starts drawing
+    setTimeout(drawopponent, 1000);   // wait a sec before dealer starts drawing
   } else {
     // split mode: only stand current hand
     const hand = splitHands[activeHand];
