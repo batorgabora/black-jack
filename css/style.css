@@ -555,7 +555,7 @@ img[src=""] {
     }
     #split {
         top: auto;
-        bottom: -14vh;
+        bottom: -10vh;
         left: 50%;
         right: auto;
         transform: translateX(-50%) rotate(0deg);

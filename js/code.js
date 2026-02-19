@@ -159,7 +159,7 @@ function firstdeal() {
 }
 
 function checkStatus() {
-  // in split mode, normal status is handled elsewhere
+  if (isSplit) return; // split mode handles its own outcomes in split.js
   if (opp_points === 21) {
     mizu.innerHTML = "gatya";
     setTimeout(() => {

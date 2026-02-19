@@ -143,7 +143,7 @@ const new_four  = document.getElementById("new_four");
 
 let hidden;
 
-let splitted = false;
+let isSplit = false
 let activeHand = 0;  // 0 = left hand, 1 = right hand
 
 splitHands = [

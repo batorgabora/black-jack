@@ -121,7 +121,7 @@ function switchsplittedhands() {
 
   setCard(card_one_opp, hidden);
   setTimeout(() => {
-    drawopponent(true);
+    drawopponent();
     splittedoutcomes();
   }, 2000);
 }
