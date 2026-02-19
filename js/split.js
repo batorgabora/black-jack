@@ -144,21 +144,28 @@ function splittedoutcomes() {
 
   let msg = "";
 
-  if (left === "win" && right === "win") {
-    msg = "sima liba";
-  } else if (left === "lose" && right === "lose") {
-    msg = "teljesen kampó";
-  } else if (left === "win" && right === "lose") {
-    msg = "bal ott volt, jobb gatya";
-  } else if (left === "lose" && right === "win") {
-    msg = "bal gatya, jobb ott volt";
-  } else if (left === "bust" && right === "bust") {
-    msg = "mindkét kéz túlment";
-  } else if (left === "bust" || right === "bust") {
-    msg = "az egyik kéz túlment";
-  } else {
-    msg = "valami mizéria";
-  }
+  if (left === "win" && right === "win")         msg = "sima liba";
+  else if (left === "lose" && right === "lose")  msg = "teljesen kampó";
+  else if (left === "bust" && right === "bust")  msg = "mindkét kéz túlment";
+
+  // push combos
+  else if (left === "push" && right === "push")  msg = "mindkét kéz döntetlen";
+  else if (left === "push" && right === "win")   msg = "bal döntetlen, jobb nyert";
+  else if (left === "push" && right === "lose")  msg = "bal döntetlen, jobb gatya";
+  else if (left === "push" && right === "bust")  msg = "bal döntetlen, jobb túlment";
+  else if (left === "win" && right === "push")   msg = "bal nyert, jobb döntetlen";
+  else if (left === "lose" && right === "push")  msg = "bal gatya, jobb döntetlen";
+  else if (left === "bust" && right === "push")  msg = "bal túlment, jobb döntetlen";
+
+  // win/lose (already covered above)
+  else if (left === "win" && right === "lose")   msg = "bal nyert, jobb gatya";
+  else if (left === "lose" && right === "win")   msg = "bal gatya, jobb nyert";
+
+  // win/bust and lose/bust
+  else if (left === "win" && right === "bust")   msg = "bal nyert, jobb túlment";
+  else if (left === "bust" && right === "win")   msg = "bal túlment, jobb nyert";
+  else if (left === "lose" && right === "bust")  msg = "bal gatya, jobb túlment";
+  else if (left === "bust" && right === "lose")  msg = "bal túlment, jobb gatya";
 
   mizu.innerHTML = msg;
 
