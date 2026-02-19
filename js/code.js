@@ -231,7 +231,7 @@ function drawopponent() {
   opp_pointer.innerHTML = formatHand(opp_points, opp_aces);
 
   // ---- WAIT, THEN CONTINUE ----
-  setTimeout(drawopponent, 900);   // dealer speed
+  setTimeout(drawopponent, 1000);   // dealer speed
 }
 
 // ---------------- display formatter for soft/hard hands ----------------
