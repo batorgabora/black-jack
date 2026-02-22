@@ -2,12 +2,12 @@
 
 function draw() {
   if (deck.length === 0) {
-    deck = [...cardimages]; // if there is nothing to draw, reshuffle
+    deck = getcardpack(cardPack); // reshuffle using current pack
     usedPile = [];
   }
   const index = Math.floor(Math.random() * deck.length);
   const card = deck[index];
-  deck.splice(index, 1); // removes drawn card from deck
+  deck.splice(index, 1);      //removes drawn card from deck
   return card;
 }
 
@@ -122,7 +122,7 @@ function firstdeal() {
   // opp: first card
   opp1 = draw();
   hidden = opp1;
-  setCard(card_one_opp, "assets/cards/card-back.svg");
+  setCard(card_one_opp, `assets/${cardPack}/card-back.${cardExt}`);
   addCardToOpp(opp1);
 
   // you: second card

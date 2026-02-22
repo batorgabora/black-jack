@@ -46,6 +46,7 @@ body {
     --polaroid-size: 7vmax;
     --vinyl-size: 8vmax;
     --thinker-size: 6vmax;
+    --deck-size: 4vmax;
 }
 
 .cards {
@@ -396,6 +397,17 @@ img[src=""] {
     left: -1vw;
     filter: drop-shadow(0 0 15px #282525);
 }
+
+#deck{
+    background-image: url("../assets/cards_steadman/deck.png");
+    width: var(--deck-size);
+    height: var(--deck-size);
+
+    bottom: 6vh; 
+    right: 3vw;
+    filter: drop-shadow(0 0 15px #282525);
+}
+
 
 #info::after { /* infobox with text, and where to position it */
     content: "gondolkodik tehát van.";

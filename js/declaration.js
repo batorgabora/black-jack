@@ -1,66 +1,75 @@
-const cardimages = [
-  // Clubs
-  'assets/cards/clubs/clubs-2.svg',
-  'assets/cards/clubs/clubs-3.svg',
-  'assets/cards/clubs/clubs-4.svg',
-  'assets/cards/clubs/clubs-5.svg',
-  'assets/cards/clubs/clubs-6.svg',
-  'assets/cards/clubs/clubs-7.svg',
-  'assets/cards/clubs/clubs-8.svg',
-  'assets/cards/clubs/clubs-9.svg',
-  'assets/cards/clubs/clubs-10.svg',
-  'assets/cards/clubs/clubs-ace.svg',
-  'assets/cards/clubs/clubs-jack.svg',
-  'assets/cards/clubs/clubs-king.svg',
-  'assets/cards/clubs/clubs-queen.svg',
+// current card pack
+let cardPack = "cards";        // "cards" or "cards-steadman"
+let cardExt  = "svg";                   // changes with pack
 
-  // Diamonds
-  'assets/cards/diamonds/diamonds-2.svg',
-  'assets/cards/diamonds/diamonds-3.svg',
-  'assets/cards/diamonds/diamonds-4.svg',
-  'assets/cards/diamonds/diamonds-5.svg',
-  'assets/cards/diamonds/diamonds-6.svg',
-  'assets/cards/diamonds/diamonds-7.svg',
-  'assets/cards/diamonds/diamonds-8.svg',
-  'assets/cards/diamonds/diamonds-9.svg',
-  'assets/cards/diamonds/diamonds-10.svg',
-  'assets/cards/diamonds/diamonds-ace.svg',
-  'assets/cards/diamonds/diamonds-jack.svg',
-  'assets/cards/diamonds/diamonds-king.svg',
-  'assets/cards/diamonds/diamonds-queen.svg',
+function getcardpack(pack, extension) {
+  const base = `assets/${pack}`;
+  cardExt = extension || cardExt;  // use provided extension or default to current cardExt
 
-  // Hearts
-  'assets/cards/hearts/hearts-2.svg',
-  'assets/cards/hearts/hearts-3.svg',
-  'assets/cards/hearts/hearts-4.svg',
-  'assets/cards/hearts/hearts-5.svg',
-  'assets/cards/hearts/hearts-6.svg',
-  'assets/cards/hearts/hearts-7.svg',
-  'assets/cards/hearts/hearts-8.svg',
-  'assets/cards/hearts/hearts-9.svg',
-  'assets/cards/hearts/hearts-10.svg',
-  'assets/cards/hearts/hearts-ace.svg',
-  'assets/cards/hearts/hearts-jack.svg',
-  'assets/cards/hearts/hearts-king.svg',
-  'assets/cards/hearts/hearts-queen.svg',
+  return [
+    // Clubs
+    `${base}/clubs/clubs-2.${cardExt}`,
+    `${base}/clubs/clubs-3.${cardExt}`,
+    `${base}/clubs/clubs-4.${cardExt}`,
+    `${base}/clubs/clubs-5.${cardExt}`,
+    `${base}/clubs/clubs-6.${cardExt}`,
+    `${base}/clubs/clubs-7.${cardExt}`,
+    `${base}/clubs/clubs-8.${cardExt}`,
+    `${base}/clubs/clubs-9.${cardExt}`,
+    `${base}/clubs/clubs-10.${cardExt}`,
+    `${base}/clubs/clubs-ace.${cardExt}`,
+    `${base}/clubs/clubs-jack.${cardExt}`,
+    `${base}/clubs/clubs-queen.${cardExt}`,
+    `${base}/clubs/clubs-king.${cardExt}`,
 
-  // Spades
-  'assets/cards/spades/spades-2.svg',
-  'assets/cards/spades/spades-3.svg',
-  'assets/cards/spades/spades-4.svg',
-  'assets/cards/spades/spades-5.svg',
-  'assets/cards/spades/spades-6.svg',
-  'assets/cards/spades/spades-7.svg',
-  'assets/cards/spades/spades-8.svg',
-  'assets/cards/spades/spades-9.svg',
-  'assets/cards/spades/spades-10.svg',
-  'assets/cards/spades/spades-ace.svg',
-  'assets/cards/spades/spades-jack.svg',
-  'assets/cards/spades/spades-king.svg',
-  'assets/cards/spades/spades-queen.svg',
-];
+    // Diamonds
+    `${base}/diamonds/diamonds-2.${cardExt}`,
+    `${base}/diamonds/diamonds-3.${cardExt}`,
+    `${base}/diamonds/diamonds-4.${cardExt}`,
+    `${base}/diamonds/diamonds-5.${cardExt}`,
+    `${base}/diamonds/diamonds-6.${cardExt}`,
+    `${base}/diamonds/diamonds-7.${cardExt}`,
+    `${base}/diamonds/diamonds-8.${cardExt}`,
+    `${base}/diamonds/diamonds-9.${cardExt}`,
+    `${base}/diamonds/diamonds-10.${cardExt}`,
+    `${base}/diamonds/diamonds-ace.${cardExt}`,
+    `${base}/diamonds/diamonds-jack.${cardExt}`,
+    `${base}/diamonds/diamonds-queen.${cardExt}`,
+    `${base}/diamonds/diamonds-king.${cardExt}`,
 
-let deck = [...cardimages];
+    // Hearts
+    `${base}/hearts/hearts-2.${cardExt}`,
+    `${base}/hearts/hearts-3.${cardExt}`,
+    `${base}/hearts/hearts-4.${cardExt}`,
+    `${base}/hearts/hearts-5.${cardExt}`,
+    `${base}/hearts/hearts-6.${cardExt}`,
+    `${base}/hearts/hearts-7.${cardExt}`,
+    `${base}/hearts/hearts-8.${cardExt}`,
+    `${base}/hearts/hearts-9.${cardExt}`,
+    `${base}/hearts/hearts-10.${cardExt}`,
+    `${base}/hearts/hearts-ace.${cardExt}`,
+    `${base}/hearts/hearts-jack.${cardExt}`,
+    `${base}/hearts/hearts-queen.${cardExt}`,
+    `${base}/hearts/hearts-king.${cardExt}`,
+
+    // Spades
+    `${base}/spades/spades-2.${cardExt}`,
+    `${base}/spades/spades-3.${cardExt}`,
+    `${base}/spades/spades-4.${cardExt}`,
+    `${base}/spades/spades-5.${cardExt}`,
+    `${base}/spades/spades-6.${cardExt}`,
+    `${base}/spades/spades-7.${cardExt}`,
+    `${base}/spades/spades-8.${cardExt}`,
+    `${base}/spades/spades-9.${cardExt}`,
+    `${base}/spades/spades-10.${cardExt}`,
+    `${base}/spades/spades-ace.${cardExt}`,
+    `${base}/spades/spades-jack.${cardExt}`,
+    `${base}/spades/spades-queen.${cardExt}`,
+    `${base}/spades/spades-king.${cardExt}`,
+  ];
+}
+
+let deck = getcardpack(cardPack);
 
 let opp_points = 0;
 let me_points  = 0;
@@ -141,6 +150,11 @@ const new_two   = document.getElementById("new_two");
 const new_three = document.getElementById("new_three");
 const new_four  = document.getElementById("new_four");
 
+new_one.setAttribute("src", `assets/${cardPack}/card-back.${cardExt}`);
+new_two.setAttribute("src", `assets/${cardPack}/card-back.${cardExt}`);
+new_three.setAttribute("src", `assets/${cardPack}/card-back.${cardExt}`);
+new_four.setAttribute("src", `assets/${cardPack}/card-back.${cardExt}`);
+
 let hidden;
 
 let isSplit = false
@@ -159,7 +173,7 @@ let usedPile = [];
 
 [...myCards, ...oppCards].forEach(clearCard);   //clears everything in the beginning
 
-usedPile = [];
+usedPile = []; 
 syncUsedImages();
 
 
@@ -174,3 +188,25 @@ jokerCard.addEventListener('click', () => {
 rulesDiv.addEventListener('click', function() {
   rulesDiv.style.display = 'none';   // close the rules overlay when clicking anywhere on it
 });
+
+
+//deck change functionality
+function togglecardpack() {
+  if (cardPack === "cards") {
+    cardPack = "cards_steadman";
+    cardExt = "png";
+  } else {
+    cardPack = "cards";
+    cardExt = "svg";
+  }
+
+  new_one.setAttribute("src", `assets/${cardPack}/card-back.${cardExt}`);
+  new_two.setAttribute("src", `assets/${cardPack}/card-back.${cardExt}`);
+  new_three.setAttribute("src", `assets/${cardPack}/card-back.${cardExt}`);
+  new_four.setAttribute("src", `assets/${cardPack}/card-back.${cardExt}`);
+
+  deck = getcardpack(cardPack);
+  usedPile = [];
+  clear();
+  firstdeal();
+}
