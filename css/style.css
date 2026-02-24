@@ -41,7 +41,7 @@ body {
 }
 
 :root {
-    --card-size: 10vmax;   /* default desktop size */
+    --card-size: 11vmax;   /* default desktop size */
     --faszmano-size: 9vmax;
     --polaroid-size: 7vmax;
     --vinyl-size: 8vmax;
