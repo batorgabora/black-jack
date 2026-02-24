@@ -54,7 +54,6 @@ body {
     width: auto;
     filter: 
     drop-shadow(0 14px 45px rgba(0,0,0,0.55));
-    border-radius: 5px;
 }
 .cards[src=""],
 .cards:not([src]) {
