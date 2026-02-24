@@ -192,6 +192,9 @@ rulesDiv.addEventListener('click', function() {
 
 //deck change functionality
 function togglecardpack() {
+  clear();
+
+
   if (cardPack === "cards") {
     cardPack = "cards_steadman";
     cardExt = "png";
@@ -200,13 +203,19 @@ function togglecardpack() {
     cardExt = "svg";
   }
 
-  new_one.setAttribute("src", `assets/${cardPack}/card-back.${cardExt}`);
-  new_two.setAttribute("src", `assets/${cardPack}/card-back.${cardExt}`);
-  new_three.setAttribute("src", `assets/${cardPack}/card-back.${cardExt}`);
-  new_four.setAttribute("src", `assets/${cardPack}/card-back.${cardExt}`);
+  const back = `assets/${cardPack}/card-back.${cardExt}`;
+  // new pile
+  new_one.src = back;
+  new_two.src = back;
+  new_three.src = back;
+  new_four.src = back;
+  // used pile
+  used_one.src = "";
+  used_two.src = "";
+  used_three.src = "";
+  used_four.src = "";
+  used_five.src = "";
 
   deck = getcardpack(cardPack);
-  usedPile = [];
-  clear();
   firstdeal();
 }

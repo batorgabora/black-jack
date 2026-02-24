@@ -11,6 +11,7 @@ function setCard(img, src) {
 
 function clear() {
   // move opponent cards to used pile
+  
   oppCards.forEach(card => {
     if (hasCard(card)) {
       pushToUsed(card.getAttribute("src"));
