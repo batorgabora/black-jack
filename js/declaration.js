@@ -1,6 +1,9 @@
-// current card pack
-let cardPack = "cards";        // "cards" or "cards-steadman"
-let cardExt  = "svg";                   // changes with pack
+// Load saved values (if any)
+let savedPack = localStorage.getItem("cardPack");
+let savedExt  = localStorage.getItem("cardExt");
+
+let cardPack = savedPack ? savedPack : "cards";
+let cardExt  = savedExt  ? savedExt  : "svg";
 
 function getcardpack(pack, extension) {
   const base = `assets/${pack}`;
@@ -194,7 +197,6 @@ rulesDiv.addEventListener('click', function() {
 function togglecardpack() {
   clear();
 
-
   if (cardPack === "cards") {
     cardPack = "cards_steadman";
     cardExt = "png";
@@ -203,12 +205,18 @@ function togglecardpack() {
     cardExt = "svg";
   }
 
+  // Save choice
+  localStorage.setItem("cardPack", cardPack);
+  localStorage.setItem("cardExt", cardExt);
+
   const back = `assets/${cardPack}/card-back.${cardExt}`;
+
   // new pile
   new_one.src = back;
   new_two.src = back;
   new_three.src = back;
   new_four.src = back;
+
   // used pile
   used_one.src = "";
   used_two.src = "";
