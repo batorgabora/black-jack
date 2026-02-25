@@ -41,7 +41,7 @@ body {
 }
 
 :root {
-    --card-size: 10vmax;   /* default desktop size */
+    --card-size: 11vmax;   /* default desktop size */
     --faszmano-size: 9vmax;
     --polaroid-size: 7vmax;
     --vinyl-size: 8vmax;
@@ -54,7 +54,6 @@ body {
     width: auto;
     filter: 
     drop-shadow(0 14px 45px rgba(0,0,0,0.55));
-    border-radius: 5px;
 }
 .cards[src=""],
 .cards:not([src]) {
