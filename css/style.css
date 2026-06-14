@@ -627,8 +627,9 @@ img[src=""] {
     }
 
     #bakelit{
+        transform: scale(0.5);
         left: 1vh;
-        top: 1vh;
+        top: 3vh;
     }
 }
 
